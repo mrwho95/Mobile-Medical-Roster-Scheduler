@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ProgressBar
+                android:id="@+id/progressbar2"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/updateBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userHospital" />
+
+            <Button
+                android:id="@+id/updateBtn"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_alignStart="@+id/LoginBtn"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/buttonstyle2"
+                android:text="Register Account"
+                android:textColor="@color/color_White"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userHospital" />
+
+            <EditText
+                android:id="@+id/userHomeAddress"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/LoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/ic_home"
+                android:ems="10"
+                android:hint="Home Address"
+                android:inputType="text"
+                android:textColor="@color/color_White"
+                android:textColorHint="@color/color_White"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/userPosition"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userAge" />
+
+            <EditText
+                android:id="@+id/userPosition"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/LoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/ic_position"
+                android:ems="10"
+                android:hint="Position"
+                android:inputType="text"
+                android:textColor="@color/color_White"
+                android:textColorHint="@color/color_White"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/userHomeAddress"
+                app:layout_constraintTop_toBottomOf="@+id/userHandphone" />
+
+            <EditText
+                android:id="@+id/userDepartment"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/LoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/ic_department"
+                android:textColor="@color/color_White"
+                android:ems="10"
+                android:hint="Department"
+                android:inputType="text"
+                android:textColorHint="@color/color_White"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/userHospital"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userHomeAddress" />
+
+            <EditText
+                android:id="@+id/userHospital"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/LoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:textColor="@color/color_White"
+                android:drawableLeft="@drawable/ic_clinician"
+                android:ems="10"
+                android:hint="Hospital"
+                android:inputType="text"
+                android:textColorHint="@color/color_White"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/userDepartment"
+                app:layout_constraintTop_toBottomOf="@+id/userPosition" />
+
+            <EditText
+                android:id="@+id/userHandphone"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/LoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/ic_phone"
+                android:textColor="@color/color_White"
+                android:ems="10"
+                android:hint="HP Number"
+                android:inputType="phone"
+                android:textColorHint="@color/color_White"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/userAge"
+                app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
+
+            <EditText
+                android:id="@+id/userAge"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/LoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/ic_age"
+                android:textColor="@color/color_White"
+
+                android:ems="10"
+                android:hint="Age"
+                android:inputType="number"
+                android:textColorHint="@color/color_White"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/userHandphone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
+
+            <EditText
+                android:id="@+id/loginPassword"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_alignStart="@+id/LoginEmail"
+                android:layout_alignBottom="@id/LoginBtn"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:textColor="@color/color_White"
+                android:textSize="16dp"
+                android:drawableLeft="@drawable/ic_password"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColorHint="@color/color_White"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/loginEmail"
+                app:layout_constraintTop_toBottomOf="@+id/userName" />
+
+            <EditText
+                android:id="@+id/loginEmail"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/LoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:textColor="@color/color_White"
+                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textColorHint="@color/color_White"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/loginPassword"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userStaffID" />
+
+            <EditText
+                android:id="@+id/userName"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/LoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:drawableLeft="@drawable/ic_user"
+                android:ems="10"
+                android:hint="Full Name"
+                android:textColor="@color/color_White"
+                android:inputType="text"
+                android:textColorHint="@color/color_White"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/userStaffID"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/userStaffID"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_above="@+id/LoginPassword"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
+                android:background="#11000000"
+                android:textColor="@color/color_White"
+
+                android:drawableLeft="@drawable/ic_staffid"
+                android:ems="10"
+                android:hint="Clinician ID"
+                android:inputType="text"
+                android:textColorHint="@color/color_White"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/userName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

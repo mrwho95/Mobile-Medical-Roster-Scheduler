@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+>
+
+        <!--<item-->
+            <!--android:id="@+id/search"-->
+            <!--android:icon="@drawable/ic_search"-->
+            <!--android:title="Search Bar"-->
+            <!--app:showAsAction="ifRoom"-->
+            <!--app:actionViewClass="android.support.v7.widget.SearchView"/>-->
+        <item
+            android:id="@+id/roster"
+            android:icon="@drawable/ic_schedule"
+            android:title="Duty Roster"
+            app:showAsAction="never" />
+
+        <item
+            android:id="@+id/dashboard"
+            android:icon="@drawable/ic_clinician"
+            android:title="Clinician"
+            app:showAsAction="never" />
+        <!--<item-->
+            <!--android:id="@+id/notification"-->
+            <!--android:icon="@drawable/ic_email_black_24dp"-->
+            <!--android:title="Notification"-->
+            <!--app:showAsAction="never"/>-->
+        <item
+            android:id="@+id/message"
+            android:icon="@drawable/ic_message"
+            android:title="Message"
+            app:showAsAction="never" />
+        <item
+            android:id="@+id/staffprofile"
+            android:icon="@drawable/ic_account"
+            android:title="Staff Profile"
+            app:showAsAction="never" />
+
+
+
+
+
+</menu>

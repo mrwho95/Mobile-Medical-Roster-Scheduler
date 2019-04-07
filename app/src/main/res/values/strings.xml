@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Medical ES</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_splash">splash</string>
+
+
+    <string name="facebook_app_id">1076148325906460</string>
+    <string name="fb_login_protocol_scheme">fb1076148325906460</string>
+</resources>
