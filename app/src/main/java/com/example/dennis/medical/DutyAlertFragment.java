@@ -1,6 +1,8 @@
 package com.example.dennis.medical;
 
 
+import android.app.Notification;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -16,6 +18,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +33,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -44,13 +55,16 @@ public class DutyAlertFragment extends Fragment {
         // Required empty public constructor
     }
 
+//    private static final String Notification_URL = "http://127.0.0.1/Medical/secret/notificationapi.php";
+    private static final String Notification_URL = "http://10.114.44.244/Medical/secret/notificationapi.php";
+
     private RecyclerView NotificationRecycleView;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
     ArrayList<Notificationmodel> notificationmodels;
     NotificationAdapter notificationAdapter;
     private TextView notification_title, notification_message;
-
+    Intent intent;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,29 +77,78 @@ public class DutyAlertFragment extends Fragment {
         NotificationRecycleView.setHasFixedSize(true);
         notificationmodels = new ArrayList<>();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Notification");
-        mAuth = FirebaseAuth.getInstance();
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                notificationmodels.clear();
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                    Notificationmodel notificationmodel =  dataSnapshot1.getValue(Notificationmodel.class);
-                    notification_message.setText(notificationmodel.getNotificationmessage());
-                    notification_title.setText(notificationmodel.getNotificationtitle());
-                    notificationmodels.add(notificationmodel);
-                }
-                notificationAdapter = new NotificationAdapter(getContext(), notificationmodels);
-                NotificationRecycleView.setAdapter(notificationAdapter);
-            }
+        loadnotification();
+        setButton();
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(getActivity(), "Opps, something is wrong!", Toast.LENGTH_LONG).show();
-            }
-        });
+//        intent = getActivity().getIntent();
+//        final String user_id = intent.getStringExtra("userId");
+
+//        databaseReference = FirebaseDatabase.getInstance().getReference("Notification");
+//        mAuth = FirebaseAuth.getInstance();
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                notificationmodels.clear();
+//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+//                    Notificationmodel notificationmodel =  dataSnapshot1.getValue(Notificationmodel.class);
+//                    assert notificationmodel != null;
+//                    assert mAuth != null;
+//                    if (!notificationmodel.getNotificationuserId().equals(mAuth.getUid())){
+//                        notificationmodels.add(notificationmodel);
+//                    }
+////                    notificationmodels.add(notificationmodel);
+//
+////                    notification_message.setText(notificationmodel.getNotificationmessage());
+////                    notification_title.setText(notificationmodel.getNotificationtitle());
+////                    notificationmodels.add(notificationmodel);
+//
+//                notificationAdapter = new NotificationAdapter(getContext(), notificationmodels);
+//                NotificationRecycleView.setAdapter(notificationAdapter);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+////                Toast.makeText(getActivity(), "Opps, something is wrong!", Toast.LENGTH_LONG).show();
+//            }
+//        });
 
         return view;
+    }
+
+    private void loadnotification(){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Notification_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray notification = new JSONArray(response);
+                    for(int i = 0; i<notification.length(); i++){
+                        JSONObject notificationobject = notification.getJSONObject(i);
+                        String Message = notificationobject.getString("Message");
+                        String Title = notificationobject.getString("Title");
+
+
+                        Notificationmodel notificationmodel = new Notificationmodel(Message, Title);
+                        notificationmodels.add(notificationmodel);
+                    }
+
+                    notificationAdapter = new NotificationAdapter(getContext(), notificationmodels);
+                    NotificationRecycleView.setAdapter(notificationAdapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+        Volley.newRequestQueue(getActivity()).add(stringRequest);
+    }
+
+    private void setButton(){
+
     }
 
 }

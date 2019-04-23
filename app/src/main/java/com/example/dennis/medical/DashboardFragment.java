@@ -59,7 +59,7 @@ public class DashboardFragment extends Fragment {
         Afternoonshift = view.findViewById(R.id.txtafternoonshift);
         Nightshift = view.findViewById(R.id.txtnightshift);
 
-        DatabaseReference getmorningshift = firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("Morning Shift");
+        DatabaseReference getmorningshift = firebaseDatabase.getReference().child("Work Shift").child(mAuth.getUid()).child("Morning Shift");
         getmorningshift.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -71,7 +71,7 @@ public class DashboardFragment extends Fragment {
             }
         });
 
-        DatabaseReference getafternoonshift = firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("Afternoon Shift");
+        DatabaseReference getafternoonshift = firebaseDatabase.getReference().child("Work Shift").child(mAuth.getUid()).child("Afternoon Shift");
         getafternoonshift.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -83,7 +83,7 @@ public class DashboardFragment extends Fragment {
             }
         });
 
-        DatabaseReference getnightshift = firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("Night Shift");
+        DatabaseReference getnightshift = firebaseDatabase.getReference().child("Work Shift").child(mAuth.getUid()).child("Night Shift");
         getnightshift.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -133,7 +133,7 @@ public class DashboardFragment extends Fragment {
         MC = view.findViewById(R.id.txtmc);
         Leaveremain = view.findViewById(R.id.txtleaveremain);
 
-        DatabaseReference leavedisplay = firebaseDatabase.getReference().child("Medical Leave").child(mAuth.getUid()).child("Leave Remain");
+        DatabaseReference leavedisplay = firebaseDatabase.getReference().child("Medical Leave").child(mAuth.getUid());
         leavedisplay.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -147,6 +147,7 @@ public class DashboardFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
+
 
         Button buttonapplyleave = (Button) view.findViewById(R.id.applyleave);
         buttonapplyleave.setOnClickListener(new View.OnClickListener() {

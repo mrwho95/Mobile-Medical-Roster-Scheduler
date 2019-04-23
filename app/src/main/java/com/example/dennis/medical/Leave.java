@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,11 +19,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Leave extends AppCompatActivity {
     private TextView startdate;
@@ -119,6 +124,11 @@ public class Leave extends AppCompatActivity {
             }
         });
 
+        final int TotalLeave = 39;
+        final int MC = 0;
+        final int AL = 20;
+        final int PH = 19;
+
 
         txtcliniciancover = (EditText)findViewById(R.id.txtcliniciancoverxml);
         txtreason = (EditText)findViewById(R.id.txtreasonxml);
@@ -213,113 +223,107 @@ public class Leave extends AppCompatActivity {
 
     private  void LeaveMC(String takeMC){
         FirebaseAuth mAuth;
-        DatabaseReference databaseReference;
+        final DatabaseReference databaseReference;
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Medical Leave").child(mAuth.getUid()).child("Leave Remain");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Medical Leave").child(mAuth.getUid());
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Map<String, String> data = (HashMap<String, String>) dataSnapshot.getValue();
+                double MC = Double.parseDouble(data.get("Medical_Certificate"));
+                double takeMC = Double.parseDouble(data.get("leaveduration"));
+                double MedicalC;
+                MedicalC = MC + takeMC;
+                int MedicalCertificate = (int) MedicalC;
+                String TotalMC = Integer.toString(MedicalCertificate);
+                setTotalMC(TotalMC);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        int takeonleaveday;
-        int TotalLeave = 39;
-        int AL = 20;
-        int PH = 19;
-        int MC = 0;
-        int remain = 0;
+            }
+        });
+    }
 
-//        takeonleaveday = Integer.parseInt(takePH);
-        TotalLeave = TotalLeave - remain;
-        String TotalLeaveAsString = Integer.toString(TotalLeave);
-
-//        takeonleaveday = Integer.parseInt(takePH);
-        PH = PH - remain;
-        String Totalpublicholidayleave = Integer.toString(PH);
-
-//        takeonleaveday = Integer.parseInt(takeAL);
-        AL = AL - remain;
-        String Totalannualleave = Integer.toString(AL);
-
-        takeonleaveday = Integer.parseInt(takeMC);
-        MC = MC + takeonleaveday;
-        String TotalMC = Integer.toString(MC);
-
-        HashMap<String, Object>hashMap = new HashMap<>();
-        hashMap.put("Total_Leave", TotalLeaveAsString );
-        hashMap.put("Public_Holiday", Totalpublicholidayleave);
-        hashMap.put("Annual_Leave", Totalannualleave);
-        hashMap.put("Medical_Certificate", TotalMC);
-        databaseReference.updateChildren(hashMap);
+    private void setTotalMC(String TotalMC){
+        mAuth = FirebaseAuth.getInstance();
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference("Medical Leave").child(mAuth.getUid());
+            HashMap<String, Object>hashMap = new HashMap<>();
+            hashMap.put("Medical_Certificate", TotalMC);
+            databaseReference.updateChildren(hashMap);
     }
     private void LeavePH(String takePH){
         FirebaseAuth mAuth;
         DatabaseReference databaseReference;
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Medical Leave").child(mAuth.getUid()).child("Leave Remain");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Medical Leave").child(mAuth.getUid());
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Map<String, String> data = (HashMap<String, String>) dataSnapshot.getValue();
+                double PH = Double.parseDouble(data.get("Public_Holiday"));
+                double TT = Double.parseDouble(data.get("Total_Leave"));
+                double takePH = Double.parseDouble(data.get("leaveduration"));
+                double RemainPH, RemainTT;
+                RemainTT = TT - takePH;
+                RemainPH = PH - takePH;
+                int totalTT = (int) RemainTT;
+                int totalPH = (int) RemainPH;
+                String TotalTT = Integer.toString(totalTT);
+                String TotalPH = Integer.toString(totalPH);
+                setTotalPH(TotalTT,TotalPH);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        int takeonleaveday;
-        int TotalLeave = 39;
-        int AL = 20;
-        int PH = 19;
-        int MC = 0;
-        int remain = 0;
-
-        takeonleaveday = Integer.parseInt(takePH);
-        TotalLeave = TotalLeave - takeonleaveday;
-        String TotalLeaveAsString = Integer.toString(TotalLeave);
-
-        takeonleaveday = Integer.parseInt(takePH);
-        PH = PH - takeonleaveday;
-        String Totalpublicholidayleave = Integer.toString(PH);
-
-//        takeonleaveday = Integer.parseInt(takeAL);
-        AL = AL - remain;
-        String Totalannualleave = Integer.toString(AL);
-
-//        takeonleaveday = Integer.parseInt(takeleave);
-        MC = MC + remain;
-        String TotalMC = Integer.toString(MC);
-
+            }
+        });
+    }
+    private void setTotalPH(String TotalTT, String TotalPH){
+        mAuth = FirebaseAuth.getInstance();
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference("Medical Leave").child(mAuth.getUid());
         HashMap<String, Object>hashMap = new HashMap<>();
-        hashMap.put("Total_Leave", TotalLeaveAsString );
-        hashMap.put("Public_Holiday", Totalpublicholidayleave);
-        hashMap.put("Annual_Leave", Totalannualleave);
-        hashMap.put("Medical_Certificate", TotalMC);
+        hashMap.put("Public_Holiday", TotalPH);
+        hashMap.put("Total_Leave", TotalTT);
         databaseReference.updateChildren(hashMap);
     }
 
     private void LeaveAL(String takeAL){
-
         FirebaseAuth mAuth;
         DatabaseReference databaseReference;
         mAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Medical Leave").child(mAuth.getUid()).child("Leave Remain");
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Medical Leave").child(mAuth.getUid());
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Map<String, String> data = (HashMap<String, String>) dataSnapshot.getValue();
+                double AL = Double.parseDouble(data.get("Annual_Leave"));
+                double TT = Double.parseDouble(data.get("Total_Leave"));
+                double takeAL = Double.parseDouble(data.get("leaveduration"));
+                double RemainAL, RemainTT;
+                RemainTT = TT - takeAL;
+                RemainAL = AL - takeAL;
+                int totalTT = (int) RemainTT;
+                int totalAL = (int) RemainAL;
+                String TotalTT = Integer.toString(totalTT);
+                String TotalAL = Integer.toString(totalAL);
+                setTotalAL(TotalTT, TotalAL);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        int takeonleaveday;
-        int TotalLeave = 39;
-        int AL = 20;
-        int PH = 19;
-        int MC = 0;
-        int remain = 0;
-
-        takeonleaveday = Integer.parseInt(takeAL);
-        TotalLeave = TotalLeave - takeonleaveday;
-        String TotalLeaveAsString = Integer.toString(TotalLeave);
-
-//        takeonleaveday = Integer.parseInt(takeleave);
-        PH = PH - remain;
-        String Totalpublicholidayleave = Integer.toString(PH);
-
-        takeonleaveday = Integer.parseInt(takeAL);
-        AL = AL - takeonleaveday;
-        String Totalannualleave = Integer.toString(AL);
-
-//        takeonleaveday = Integer.parseInt(takeleave);
-        MC = MC + remain;
-        String TotalMC = Integer.toString(MC);
-
+            }
+        });
+    }
+    private void setTotalAL(String TotalTT, String TotalAL){
+        mAuth = FirebaseAuth.getInstance();
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference("Medical Leave").child(mAuth.getUid());
         HashMap<String, Object>hashMap = new HashMap<>();
-        hashMap.put("Total_Leave", TotalLeaveAsString );
-        hashMap.put("Public_Holiday", Totalpublicholidayleave);
-        hashMap.put("Annual_Leave", Totalannualleave);
-        hashMap.put("Medical_Certificate", TotalMC);
+        hashMap.put("Annual_Leave", TotalAL);
+        hashMap.put("Total_Leave", TotalTT);
         databaseReference.updateChildren(hashMap);
-
     }
 }

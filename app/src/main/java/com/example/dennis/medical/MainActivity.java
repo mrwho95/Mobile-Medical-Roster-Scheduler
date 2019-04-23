@@ -32,11 +32,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth.AuthStateListener mAuthListener;
     ProgressBar progressBar;
 
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+//To do//
+                            return;
+                        }
+
+// Get the Instance ID token//
+                        String token = task.getResult().getToken();
+                        String msg = getString(R.string.fcm_token, token);
+                        Log.d(TAG, msg);
+
+                    }
+                });
+
+
 
         mAuth = FirebaseAuth.getInstance();
         Email = (EditText) findViewById(R.id.LoginEmail);

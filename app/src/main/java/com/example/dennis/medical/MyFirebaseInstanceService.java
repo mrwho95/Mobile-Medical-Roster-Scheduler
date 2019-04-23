@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.graphics.Color;
+import android.media.RingtoneManager;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -25,6 +26,8 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
             showNotification(remoteMessage.getData());
         }
     }
+
+
 
     private void showNotification(Map<String,String> data) {
         String title = data.get("title").toString().trim();
@@ -51,12 +54,17 @@ public class MyFirebaseInstanceService extends FirebaseMessagingService {
                 .setColor(Color.GREEN);
 
         notificationBuilder.setAutoCancel(true)
+//                .setDefaults(Notification.DEFAULT_SOUND|Notification.DEFAULT_LIGHTS|Notification.DEFAULT_VIBRATE)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.drawable.notification_message)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setContentInfo("Info");
+
+
+
+
 
         notificationManager.notify(new Random().nextInt(), notificationBuilder.build());
     }

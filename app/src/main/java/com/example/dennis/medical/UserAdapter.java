@@ -77,6 +77,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder>{
                 context.startActivity(intent);
             }
         });
+
+//        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent1 = new Intent(context, DutyAlertFragment.class);
+//                intent1.putExtra("userId", userProfile.getUserId());
+//                context.startActivity(intent1);
+//            }
+//        });
     }
 
     @Override

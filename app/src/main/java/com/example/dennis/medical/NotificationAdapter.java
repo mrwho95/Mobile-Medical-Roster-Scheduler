@@ -1,6 +1,7 @@
 package com.example.dennis.medical;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,30 +19,42 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     Context notificationcontext;
     ArrayList<Notificationmodel> notificationmodels;
+//    private OnItemClickListener mListener;
 
-    public NotificationAdapter(Context nc, ArrayList<Notificationmodel> nms)
+//    public interface OnItemClickListener {
+//        void onItemClick(int i);
+//
+//        void onDeleteClick(int i);
+//    }
+
+//    public void setOnItemClickListener(OnItemClickListener listener) {
+//        mListener = listener;
+//    }
+
+    public NotificationAdapter(Context notificationcontext, ArrayList<Notificationmodel>notificationmodels)
     {
-        notificationcontext = nc;
-        notificationmodels = nms;
+        this.notificationcontext = notificationcontext;
+        this.notificationmodels = notificationmodels;
     }
 
     @NonNull
     @Override
     public NotificationHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new NotificationHolder(LayoutInflater.from(notificationcontext).inflate(R.layout.cardview,viewGroup,false));
-
+        View view = LayoutInflater.from(notificationcontext).inflate(R.layout.cardview,viewGroup,false);
+        return new NotificationAdapter.NotificationHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull NotificationHolder notificationHolder, int i) {
-            notificationHolder.Notificationtitle.setText(notificationmodels.get(i).getNotificationtitle());
-            notificationHolder.Notificationmessage.setText(notificationmodels.get(i).getNotificationmessage());
+            notificationHolder.Notificationtitle.setText(notificationmodels.get(i).getnotificationTitle());
+            notificationHolder.Notificationmessage.setText(notificationmodels.get(i).getnotificationMessage());
 
-        if (notificationmodels.get(i).getNotificationprofilepic().equals("defaults")){
-            notificationHolder.Notificationpic.setImageResource(R.mipmap.ic_launcher);
-        }else {
-            Glide.with(notificationcontext).load(notificationmodels.get(i).getNotificationprofilepic()).into(notificationHolder.Notificationpic);
-        }
+//        if (notificationmodels.get(i).getNotificationprofilepic().equals("defaults")){
+//            notificationHolder.Notificationpic.setImageResource(R.mipmap.ic_launcher);
+//        }else {
+//            Glide.with(notificationcontext).load(notificationmodels.get(i).getNotificationprofilepic()).into(notificationHolder.Notificationpic);
+//        }
+
 
     }
 
@@ -52,13 +65,38 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     class NotificationHolder extends RecyclerView.ViewHolder{
         private TextView Notificationmessage, Notificationtitle;
-        private ImageView Notificationpic;
-        public NotificationHolder(@NonNull View itemView) {
+        private ImageView Delete_Notification;
+//        private ImageView Notificationpic;
+        public NotificationHolder(@NonNull final View itemView) {
             super(itemView);
             Notificationmessage = itemView.findViewById(R.id.notification_message);
             Notificationtitle = itemView.findViewById(R.id.notification_title);
-            Notificationpic = itemView.findViewById(R.id.notification_pic);
+//            Delete_Notification = itemView.findViewById(R.id.delete_notification);
+//            Notificationpic = itemView.findViewById(R.id.notification_pic);
 
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (listener != null) {
+//                        int i = getAdapterPosition();
+//                        if (i != RecyclerView.NO_POSITION) {
+//                            listener.onItemClick(i);
+//                        }
+//                    }
+//                }
+//            });
+//
+//            Delete_Notification.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (listener != null) {
+//                        int i = getAdapterPosition();
+//                        if (i != RecyclerView.NO_POSITION) {
+//                            listener.onDeleteClick(i);
+//                        }
+//                    }
+//                }
+//            });
         }
     }
 }
