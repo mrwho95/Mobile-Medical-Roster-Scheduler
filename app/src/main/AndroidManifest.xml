@@ -34,7 +34,7 @@
         <activity android:name=".Dashboard" />
         <activity
             android:name=".Register"
-            android:parentActivityName=".Signin" />
+            android:parentActivityName=".Signup" />
         <activity
             android:name=".Roster"
             android:parentActivityName=".MainActivity" />
@@ -78,7 +78,7 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".Signin"
+            android:name=".Signup"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".forgotpassword"
@@ -90,8 +90,9 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".ChatMessage"
-            android:parentActivityName=".DutyAlert"></activity>
+        <activity
+            android:name=".ChatMessage"
+            android:parentActivityName=".DutyAlert" />
     </application>
 
 </manifest>

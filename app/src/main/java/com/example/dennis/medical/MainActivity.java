@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Email = (EditText) findViewById(R.id.LoginEmail);
         Password = (EditText) findViewById(R.id.LoginPassword);
 //        LoginBtn = (Button) findViewById(R.id.LoginBtn);
-//        Signin = (TextView) findViewById(R.id.sign_inoptions);
+        Signin = (TextView) findViewById(R.id.sign_inoptions);
 //        forgotpassword = (TextView) findViewById(R.id.forgotpassword);
         progressBar = (ProgressBar)findViewById(R.id.progressbar);
 
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.sign_inoptions:
-                startActivity(new Intent(MainActivity.this, Signin.class));
+                startActivity(new Intent(MainActivity.this, Signup.class));
                 break;
         }
     }

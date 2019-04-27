@@ -30,6 +30,8 @@ public class UserProfile {
         this.userPosition = Position;
         this.userDepartment = Department;
         this.userHospital = Hospital;
+        this.userId = userId;
+        this.userstatus = userstatus;
 
 //        this.userImageurl = userImageurl;
     }

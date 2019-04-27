@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -157,6 +158,62 @@ public class UpdateProfile extends AppCompatActivity {
                 clinicianposition = newPosition.getText().toString().trim();
                 department = newDepartment.getText().toString().trim();
                 hospital = newHospital.getText().toString().trim();
+
+                if (fullname.isEmpty()){
+                    newFullName.setError("Full Name is required");
+                    newFullName.requestFocus();
+                    return;
+                }
+                if (staffID.isEmpty()){
+                    newStaffID.setError("Clinician ID is required");
+                    newStaffID.requestFocus();
+                    return;
+                }
+                if (email.isEmpty()){
+                    newEmail.setError("Email is required");
+                    newEmail.requestFocus();
+                    return;
+                }
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                    newEmail.setError("Please enter a valid email");
+                    newEmail.requestFocus();
+                    return;
+                }
+                if (password.isEmpty()){
+                    newPassword.setError("Password is required");
+                    newPassword.requestFocus();
+                    return;
+                }
+                if (department.isEmpty()){
+                    newDepartment.setError("Department Name is required");
+                    newDepartment.requestFocus();
+                    return;
+                }
+                if (age.isEmpty()){
+                    newAge.setError("Age is required");
+                    newAge.requestFocus();
+                    return;
+                }
+                if (handphone.isEmpty()){
+                    newHandphone.setError("Handphone Number is required");
+                    newHandphone.requestFocus();
+                    return;
+                }
+                if (homeaddress.isEmpty()){
+                    newHomeAddress.setError("Home Address is required");
+                    newHomeAddress.requestFocus();
+                    return;
+                }
+                if (clinicianposition.isEmpty()){
+                    newPosition.setError("Position is required");
+                    newPosition.requestFocus();
+                    return;
+                }
+                if (hospital.isEmpty()){
+                    newHospital.setError("Hospital Name is required");
+                    newHospital.requestFocus();
+                    return;
+                }
 
 //             //update data
 //               Intent intent = getIntent();

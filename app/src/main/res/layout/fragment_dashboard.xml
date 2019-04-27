@@ -19,7 +19,7 @@
         <android.support.v7.widget.CardView
             android:id="@+id/cardView2"
             android:layout_width="380dp"
-            android:layout_height="170dp"
+            android:layout_height="190dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -32,26 +32,28 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/txtnightshift"
+                    android:id="@+id/txtWednesday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:text="PM"
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
                     app:layout_constraintStart_toEndOf="@+id/textView27"
-                    app:layout_constraintTop_toBottomOf="@+id/txtafternoonshift" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtTueday" />
 
                 <TextView
-                    android:id="@+id/txtafternoonshift"
+                    android:id="@+id/txtTueday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:text="PM"
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
                     app:layout_constraintStart_toEndOf="@+id/textView26"
-                    app:layout_constraintTop_toBottomOf="@+id/txtmorningshift" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtMonday" />
 
                 <TextView
                     android:id="@+id/textView25"
@@ -61,8 +63,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:text="Monday:"
                     android:textColor="@color/color_Dark"
-                    android:text="Morning Shift:"
                     android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView60" />
@@ -73,10 +75,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignEnd="@+id/textView25"
                     android:layout_centerVertical="true"
-                    android:textColor="@color/color_Dark"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:text="Afternoon Shift:"
+                    android:text="Tueday:"
+                    android:textColor="@color/color_Dark"
                     android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView25" />
@@ -89,8 +91,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:text="Wednesday:"
                     android:textColor="@color/color_Dark"
-                    android:text="Night Shift:"
                     android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView26" />
@@ -99,23 +101,120 @@
                     android:id="@+id/textView60"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Shift For This Week"
-                    android:textSize="18dp"
+                    android:text="Work For This Week"
                     android:textColor="@color/color_Dark"
+                    android:textSize="18dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txtmorningshift"
+                    android:id="@+id/txtMonday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:text="AM"
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
                     app:layout_constraintStart_toEndOf="@+id/textView25"
                     app:layout_constraintTop_toBottomOf="@+id/textView60" />
+
+                <TextView
+                    android:id="@+id/textView35"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Friday:"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/txtFriday"
+                    app:layout_constraintTop_toBottomOf="@+id/textView60" />
+
+                <TextView
+                    android:id="@+id/textView36"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Saturday:"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/txtSaturday"
+                    app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+                <TextView
+                    android:id="@+id/txtFriday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="64dp"
+                    android:text="ND"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView60" />
+
+                <TextView
+                    android:id="@+id/txtSaturday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="64dp"
+                    android:text="ND"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFriday" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Thursday:"
+                    android:textSize="16dp"
+                    android:textColor="@color/color_Dark"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+                <TextView
+                    android:id="@+id/txtThursday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="AM"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView39"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWednesday" />
+
+                <TextView
+                    android:id="@+id/textView41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Sunday:"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toStartOf="@+id/txtSunday"
+                    app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+                <TextView
+                    android:id="@+id/txtSunday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="64dp"
+                    android:text="AM"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtSaturday" />
             </android.support.constraint.ConstraintLayout>
 
 
@@ -284,7 +383,7 @@
                     android:id="@+id/SubmitPreferenceBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="14dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
 
@@ -298,7 +397,7 @@
                     android:id="@+id/textView57"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Select Preference for This Week"
+                    android:text="Select Preference for Next Week"
                     android:textSize="18dp"
                     android:textColor="@color/color_Dark"
                     android:textStyle="bold"
@@ -319,11 +418,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="33dp"
                         android:layout_marginTop="8dp"
-                        android:text="Morning Shift AM 7am - 2pm"
+                        android:text="Morning"
                         android:textSize="16dp"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView57"/>
-                        <!--android:onClick="checkButton"-->
+                        app:layout_constraintTop_toBottomOf="@+id/textView57" />
+                    <!--android:onClick="checkButton"-->
 
 
                     <RadioButton
@@ -331,7 +430,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Afternoon Shift PM 2pm - 9pm"
+                        android:text="Afternoon"
                         android:textSize="16dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/RadioMorningShift" />
@@ -340,14 +439,73 @@
                     <RadioButton
                         android:id="@+id/RadioNightShift"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="8dp"
-                        android:text="Night Shift ND 9pm - 7am (The Next Morning)"
+                        android:text="Night"
                         android:textSize="16dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/RadioAfternoonShift" />
                     <!--android:onClick="checkButton"-->
                 </RadioGroup>
+
+
+                <TextView
+
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="108dp"
+                    android:layout_marginTop="8dp"
+                    android:text="7am - 2pm for Nurse"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView57" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="108dp"
+                    android:text="7am - 7pm for Doctor"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="108dp"
+                    android:layout_marginTop="4dp"
+                    android:text="2pm - 9pm for Nurse"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                <TextView
+                    android:id="@+id/textView34"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="108dp"
+                    android:text="7am - 10pm for Doctor"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="108dp"
+                    android:layout_marginTop="8dp"
+                    android:text="9pm - 7am for Nurse"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
 
 

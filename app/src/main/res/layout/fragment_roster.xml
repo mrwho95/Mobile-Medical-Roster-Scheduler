@@ -13,7 +13,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <!-- TODO: Update blank fragment layout -->
 
@@ -27,294 +27,43 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-
-            <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:orientation="vertical"-->
-            <!--&gt;-->
-
-            <!--<TableLayout-->
-                <!--android:id="@+id/tableLayout4"-->
-                <!--android:layout_width="300dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginHorizontal="10dp"-->
-                <!--android:layout_marginVertical="30dp"-->
-                <!--android:layout_marginTop="8dp"-->
-                <!--android:background="@drawable/tablestyle1"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/tableLayout5">-->
-
-                <!--<TableRow>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginHorizontal="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="CLINICIAN ROSTER"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-                <!--</TableRow>-->
-
-                <!--<TableRow>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginHorizontal="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="29/4/2019 - 5/5/2019"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-                <!--</TableRow>-->
-
-                <!--<TableRow>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginHorizontal="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Monday"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="AM"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-
-                <!--</TableRow>-->
-
-                <!--<TableRow-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent">-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginHorizontal="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Tueday"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="AM"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-
-                <!--</TableRow>-->
-
-                <!--<TableRow>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginHorizontal="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Wedneday"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="ND"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-
-                <!--</TableRow>-->
-
-                <!--<TableRow>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginHorizontal="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Thursday"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="ND"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-
-                <!--</TableRow>-->
-
-
-                <!--<TableRow>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginHorizontal="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Friday"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text=""-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-
-                <!--</TableRow>-->
-
-                <!--<TableRow>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginHorizontal="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Saturday"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="#ffffff"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="PM"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-
-                <!--</TableRow>-->
-
-                <!--<TableRow>-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginHorizontal="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="Sunday"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginRight="1dp"-->
-                        <!--android:layout_marginBottom="1dp"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:gravity="center"-->
-                        <!--android:text="PM"-->
-                        <!--android:textColor="@color/color_Dark"-->
-                        <!--android:textStyle="bold" />-->
-
-
-                <!--</TableRow>-->
-            <!--</TableLayout>-->
-
             <TableLayout
-                android:id="@+id/tableLayout5"
-                android:layout_width="390dp"
+                android:id="@+id/tableLayout4"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="30dp"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/tablestyle1"
-                android:stretchColumns="*"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rostercalendarview">
 
                 <TableRow>
 
-                <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="1dp"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="CLINICIAN ROSTER"
-                android:textColor="@color/color_Dark"
-                android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="CLINICIAN ROSTER"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
 
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/txtweek"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
                         android:layout_weight="1"
-
+                        android:background="#ffffff"
                         android:gravity="center"
                         android:text="13/5/2019 - 17/5/2019"
                         android:textColor="@color/color_Dark"
@@ -322,239 +71,491 @@
 
                 </TableRow>
 
-                <TableRow android:background="#ffffff">
+                <TableRow>
 
                     <TextView
-                        android:layout_width="50dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Name"
+                        android:text="Monday"
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="25dp"
+                        android:id="@+id/txtMON"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="1dp"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Role"
+                        android:text="AM"
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-
+                        android:layout_weight="1"
+                        android:background="#ffffff"
                         android:gravity="center"
-                        android:text="MON"
+                        android:text="Tueday"
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:id="@+id/txtTUE"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="1dp"
                         android:layout_marginBottom="1dp"
-
+                        android:layout_weight="1"
+                        android:background="#ffffff"
                         android:gravity="center"
-                        android:text="TUE"
+                        android:text="AM"
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="1dp"
-                        android:layout_marginBottom="1dp"
 
-                        android:gravity="center"
-                        android:text="WED"
-                        android:textColor="@color/color_Dark"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginBottom="1dp"
-
-                        android:gravity="center"
-                        android:text="THU"
-                        android:textColor="@color/color_Dark"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="1dp"
-                        android:layout_marginBottom="1dp"
-
-                        android:gravity="center"
-                        android:text="FRI"
-                        android:textColor="@color/color_Dark"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginBottom="1dp"
-
-                        android:gravity="center"
-                        android:text="SAT"
-                        android:textColor="@color/color_Dark"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginBottom="1dp"
-
-                        android:gravity="center"
-                        android:text="SUN"
-                        android:textColor="@color/color_Dark"
-                        android:textStyle="bold" />
                 </TableRow>
 
                 <TableRow>
 
                     <TextView
-                        android:id="@+id/txtName"
-                        android:layout_width="50dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:gravity="center"
-
-                        android:textColor="@color/color_Dark" />
-
-                    <TextView
-                        android:id="@+id/txtPosition"
-                        android:layout_width="25dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginBottom="1dp"
-                        android:gravity="center"
-
-                        android:textColor="@color/color_Dark" />
-
-                    <TextView
-                        android:id="@+id/txtMON"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="1dp"
-                        android:layout_marginBottom="1dp"
-
-                        android:gravity="center"
-
-                        android:textColor="@color/color_Dark" />
-
-                    <TextView
-                        android:id="@+id/txtTUE"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="1dp"
-                        android:layout_marginBottom="1dp"
-
-                        android:gravity="center"
-
-                        android:textColor="@color/color_Dark" />
+                        android:text="Wedneday"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtWED"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="ND"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
+
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-
+                        android:layout_weight="1"
+                        android:background="#ffffff"
                         android:gravity="center"
-
-                        android:textColor="@color/color_Dark" />
+                        android:text="Thursday"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtTHU"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="1dp"
                         android:layout_marginBottom="1dp"
-
+                        android:layout_weight="1"
+                        android:background="#ffffff"
                         android:gravity="center"
+                        android:text="ND"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
 
-                        android:textColor="@color/color_Dark" />
+
+                </TableRow>
+
+
+                <TableRow>
 
                     <TextView
-                        android:id="@+id/txtFRI"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-
+                        android:layout_weight="1"
                         android:gravity="center"
+                        android:text="Friday"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
 
-                        android:textColor="@color/color_Dark" />
+                    <TextView
+                        android:id="@+id/txtFRI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
+
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:background="#ffffff"
+                        android:gravity="center"
+                        android:text="Saturday"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtSAT"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="1dp"
                         android:layout_marginBottom="1dp"
-
+                        android:layout_weight="1"
+                        android:background="#ffffff"
                         android:gravity="center"
+                        android:text="PM"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
 
-                        android:textColor="@color/color_Dark" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Sunday"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtSUN"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="1dp"
                         android:layout_marginBottom="1dp"
-
+                        android:layout_weight="1"
                         android:gravity="center"
+                        android:text="PM"
+                        android:textColor="@color/color_Dark"
+                        android:textStyle="bold" />
 
-                        android:textColor="@color/color_Dark" />
+
                 </TableRow>
-
-                <!--<TableRow-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent">-->
-
-                <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginHorizontal="1dp"-->
-                <!--android:layout_marginBottom="1dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:background="#ffffff"-->
-                <!--android:gravity="center"-->
-                <!--android:text="Tueday"-->
-                <!--android:textColor="@color/color_Dark"-->
-                <!--android:textStyle="bold" />-->
-
-                <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginRight="1dp"-->
-                <!--android:layout_marginBottom="1dp"-->
-                <!--android:layout_weight="1"-->
-                <!--android:background="#ffffff"-->
-                <!--android:gravity="center"-->
-                <!--android:text="AM"-->
-                <!--android:textColor="@color/color_Dark"-->
-                <!--android:textStyle="bold" />-->
-
-
-                <!--</TableRow>-->
-
-
             </TableLayout>
+
+            <!--<TableLayout-->
+            <!--android:id="@+id/tableLayout5"-->
+            <!--android:layout_width="390dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginHorizontal="10dp"-->
+            <!--android:layout_marginVertical="30dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:background="@drawable/tablestyle1"-->
+            <!--android:stretchColumns="*"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/rostercalendarview">-->
+
+            <!--<TableRow>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:text="CLINICIAN ROSTER"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--</TableRow>-->
+
+            <!--<TableRow>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:layout_weight="1"-->
+
+            <!--android:gravity="center"-->
+            <!--android:text="13/5/2019 - 17/5/2019"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--</TableRow>-->
+
+            <!--<TableRow android:background="#ffffff">-->
+
+            <!--<TextView-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Name"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="25dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="Role"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+            <!--android:text="MON"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+            <!--android:text="TUE"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+            <!--android:text="WED"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+            <!--android:text="THU"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+            <!--android:text="FRI"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+            <!--android:text="SAT"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+
+            <!--<TextView-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+            <!--android:text="SUN"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold" />-->
+            <!--</TableRow>-->
+
+            <!--<TableRow>-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtName"-->
+            <!--android:layout_width="50dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:gravity="center"-->
+
+            <!--android:textColor="@color/color_Dark" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtPosition"-->
+            <!--android:layout_width="25dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+            <!--android:gravity="center"-->
+
+            <!--android:textColor="@color/color_Dark" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtMON"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+
+            <!--android:textColor="@color/color_Dark" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtTUE"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+
+            <!--android:textColor="@color/color_Dark" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtWED"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+
+            <!--android:textColor="@color/color_Dark" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtTHU"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+
+            <!--android:textColor="@color/color_Dark" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtFRI"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginHorizontal="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+
+            <!--android:textColor="@color/color_Dark" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtSAT"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+
+            <!--android:textColor="@color/color_Dark" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/txtSUN"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="1dp"-->
+            <!--android:layout_marginBottom="1dp"-->
+
+            <!--android:gravity="center"-->
+
+            <!--android:textColor="@color/color_Dark" />-->
+            <!--</TableRow>-->
+
+            <!--&lt;!&ndash;<TableRow&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="match_parent">&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginHorizontal="1dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginBottom="1dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="#ffffff"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="Tueday"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textColor="@color/color_Dark"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textStyle="bold" />&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="1dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginBottom="1dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_weight="1"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="#ffffff"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="AM"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textColor="@color/color_Dark"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textStyle="bold" />&ndash;&gt;-->
+
+
+            <!--&lt;!&ndash;</TableRow>&ndash;&gt;-->
+
+
+            <!--</TableLayout>-->
 
             <TableLayout
                 android:id="@+id/tableLayout3"
@@ -563,13 +564,12 @@
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/tablestyle1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tableLayout5">
+                app:layout_constraintTop_toBottomOf="@+id/tableLayout4">
 
                 <TableRow>
 
@@ -637,7 +637,7 @@
                         android:textStyle="bold" />
                 </TableRow>
 
-                <TableRow>
+                <TableRow android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -1030,15 +1030,15 @@
             </TableLayout>
 
             <!--<TextView-->
-                <!--android:id="@+id/txtdutyresult"-->
-                <!--android:layout_width="300dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginTop="24dp"-->
-                <!--android:textColor="@color/color_Dark"-->
-                <!--android:textStyle="bold"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toBottomOf="@+id/rostercalendarview" />-->
+            <!--android:id="@+id/txtdutyresult"-->
+            <!--android:layout_width="300dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="24dp"-->
+            <!--android:textColor="@color/color_Dark"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/rostercalendarview" />-->
 
 
             <!--</LinearLayout>-->

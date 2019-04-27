@@ -38,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -63,7 +64,7 @@ public class DutyAlertFragment extends Fragment {
     private FirebaseAuth mAuth;
     ArrayList<Notificationmodel> notificationmodels;
     NotificationAdapter notificationAdapter;
-    private TextView notification_title, notification_message;
+    private TextView notification_title, notification_message, notification_timestamp;
     Intent intent;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,78 +78,75 @@ public class DutyAlertFragment extends Fragment {
         NotificationRecycleView.setHasFixedSize(true);
         notificationmodels = new ArrayList<>();
 
-        loadnotification();
-        setButton();
+//        loadnotification();
+//        setButton();
 
 //        intent = getActivity().getIntent();
 //        final String user_id = intent.getStringExtra("userId");
 
-//        databaseReference = FirebaseDatabase.getInstance().getReference("Notification");
-//        mAuth = FirebaseAuth.getInstance();
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                notificationmodels.clear();
-//                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-//                    Notificationmodel notificationmodel =  dataSnapshot1.getValue(Notificationmodel.class);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Notification");
+        mAuth = FirebaseAuth.getInstance();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                notificationmodels.clear();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                    Notificationmodel notificationmodel = dataSnapshot1.getValue(Notificationmodel.class);
+                    notificationmodels.add(notificationmodel);
 //                    assert notificationmodel != null;
 //                    assert mAuth != null;
 //                    if (!notificationmodel.getNotificationuserId().equals(mAuth.getUid())){
 //                        notificationmodels.add(notificationmodel);
 //                    }
-////                    notificationmodels.add(notificationmodel);
-//
-////                    notification_message.setText(notificationmodel.getNotificationmessage());
-////                    notification_title.setText(notificationmodel.getNotificationtitle());
-////                    notificationmodels.add(notificationmodel);
-//
-//                notificationAdapter = new NotificationAdapter(getContext(), notificationmodels);
-//                NotificationRecycleView.setAdapter(notificationAdapter);
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-////                Toast.makeText(getActivity(), "Opps, something is wrong!", Toast.LENGTH_LONG).show();
-//            }
-//        });
+//                    notification_message.setText(notificationmodel.getnotificationMessage());
+//                    notification_title.setText(notificationmodel.getnotificationTitle());
+//                    notification_timestamp.setText(notificationmodel.getnotificationTimestamp());
+                }
+
+                notificationAdapter = new NotificationAdapter(getContext(), notificationmodels);
+                NotificationRecycleView.setAdapter(notificationAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Opps, something is wrong!", Toast.LENGTH_LONG).show();
+            }
+        });
 
         return view;
     }
 
-    private void loadnotification(){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Notification_URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONArray notification = new JSONArray(response);
-                    for(int i = 0; i<notification.length(); i++){
-                        JSONObject notificationobject = notification.getJSONObject(i);
-                        String Message = notificationobject.getString("Message");
-                        String Title = notificationobject.getString("Title");
+//    private void loadnotification(){
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, Notification_URL, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                try {
+//                    JSONArray notification = new JSONArray(response);
+//                    for(int i = 0; i<notification.length(); i++){
+//                        JSONObject notificationobject = notification.getJSONObject(i);
+//                        String Message = notificationobject.getString("Message");
+//                        String Title = notificationobject.getString("Title");
+//
+//
+//                        Notificationmodel notificationmodel = new Notificationmodel(Message, Title,);
+//                        notificationmodels.add(notificationmodel);
+//                    }
+//
+//                    notificationAdapter = new NotificationAdapter(getContext(), notificationmodels);
+//                    NotificationRecycleView.setAdapter(notificationAdapter);
+//
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        });
+//        Volley.newRequestQueue(getActivity()).add(stringRequest);
+//    }
 
-
-                        Notificationmodel notificationmodel = new Notificationmodel(Message, Title);
-                        notificationmodels.add(notificationmodel);
-                    }
-
-                    notificationAdapter = new NotificationAdapter(getContext(), notificationmodels);
-                    NotificationRecycleView.setAdapter(notificationAdapter);
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-        Volley.newRequestQueue(getActivity()).add(stringRequest);
-    }
-
-    private void setButton(){
-
-    }
 
 }

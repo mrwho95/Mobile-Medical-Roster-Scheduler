@@ -6,15 +6,16 @@ public class Notificationmodel {
 //    private String notificationmessage, notificationprofilepic, notificationtitle;
 //    private String notificationuserId;
 
-    private String Message, Title;
+    private String Message, Title, Timestamp;
 
     public Notificationmodel(){
 
     }
 
-    public Notificationmodel(String message, String title) {
-        Message = message;
-        Title = title;
+    public Notificationmodel(String Message, String Title, String Timestamp) {
+        this.Message = Message;
+        this.Title = Title;
+        this.Timestamp = Timestamp;
     }
 
     public String getnotificationMessage() {
@@ -25,7 +26,9 @@ public class Notificationmodel {
         return Title;
     }
 
-
+    public String getnotificationTimestamp() {
+        return Timestamp;
+    }
 
     //    public Notificationmodel(String notificationmessage, String notificationtitle, String userId) {
 //        this.notificationmessage = notificationmessage;

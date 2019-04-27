@@ -3,7 +3,6 @@ package com.example.dennis.medical;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -208,9 +207,35 @@ public class Leave extends AppCompatActivity {
                 StartDate = startdate.getText().toString().trim();
                 EndDate = enddate.getText().toString().trim();
                 TxTcliniciancover = txtcliniciancover.getText().toString().trim();
+                onleaveduration = leaveduration.getText().toString().trim();
+                validate(StartDate, EndDate, onleaveduration);
+                if (TxTreason.isEmpty()){
+                    txtreason.setError("Reason is required");
+                    txtreason.requestFocus();
+                    return;
+                }
+                if (TxTcliniciancover.isEmpty()){
+                    txtcliniciancover.setError("Clinician Cover is required");
+                    txtcliniciancover.requestFocus();
+                    return;
+                }
+                if (StartDate.isEmpty()){
+                    Toast.makeText(Leave.this, "Start Date is required", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (EndDate.isEmpty()){
+                    Toast.makeText(Leave.this, "End Date is required", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (onleaveduration.isEmpty()){
+                    Toast.makeText(Leave.this, "Leave Duration is required", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference leaveRef = firebaseDatabase.getReference().child("Medical Leave").child(mAuth.getUid());
                 HashMap<String, Object>hashMap = new HashMap<>();
+                hashMap.put("leaveduration", onleaveduration);
                 hashMap.put("clinician_cover", TxTcliniciancover );
                 hashMap.put("leavereason", TxTreason);
                 hashMap.put("leaveenddate", EndDate);
@@ -220,6 +245,26 @@ public class Leave extends AppCompatActivity {
             }
         });
     }
+
+    public boolean validate(String startDate, String endDate, String ONLeaveduration){
+        startDate = startdate.getText().toString();
+        endDate = enddate.getText().toString();
+        ONLeaveduration = leaveduration.getText().toString();
+
+        if (startDate.isEmpty()){
+            Toast.makeText(this, "Start Date is required", Toast.LENGTH_LONG).show();
+            return false;
+        }else if(endDate.isEmpty()){
+            Toast.makeText(this, "End Date is required", Toast.LENGTH_LONG).show();
+            return false;
+        }else if(ONLeaveduration.isEmpty()){
+            Toast.makeText(this, "Leave Duration is required", Toast.LENGTH_LONG).show();
+            return false;
+        }else{return true;}
+
+
+    }
+
 
     private  void LeaveMC(String takeMC){
         FirebaseAuth mAuth;

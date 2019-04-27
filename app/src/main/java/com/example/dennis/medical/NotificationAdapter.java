@@ -19,17 +19,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     Context notificationcontext;
     ArrayList<Notificationmodel> notificationmodels;
-//    private OnItemClickListener mListener;
 
-//    public interface OnItemClickListener {
-//        void onItemClick(int i);
-//
-//        void onDeleteClick(int i);
-//    }
-
-//    public void setOnItemClickListener(OnItemClickListener listener) {
-//        mListener = listener;
-//    }
 
     public NotificationAdapter(Context notificationcontext, ArrayList<Notificationmodel>notificationmodels)
     {
@@ -46,8 +36,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull NotificationHolder notificationHolder, int i) {
-            notificationHolder.Notificationtitle.setText(notificationmodels.get(i).getnotificationTitle());
-            notificationHolder.Notificationmessage.setText(notificationmodels.get(i).getnotificationMessage());
+        notificationHolder.Notificationtitle.setText(notificationmodels.get(i).getnotificationTitle());
+        notificationHolder.Notificationmessage.setText(notificationmodels.get(i).getnotificationMessage());
+        notificationHolder.Notificationtimestamp.setText(notificationmodels.get(i).getnotificationTimestamp());
 
 //        if (notificationmodels.get(i).getNotificationprofilepic().equals("defaults")){
 //            notificationHolder.Notificationpic.setImageResource(R.mipmap.ic_launcher);
@@ -64,13 +55,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     class NotificationHolder extends RecyclerView.ViewHolder{
-        private TextView Notificationmessage, Notificationtitle;
-        private ImageView Delete_Notification;
-//        private ImageView Notificationpic;
+        private TextView Notificationmessage, Notificationtitle, Notificationtimestamp;
+//        private ImageView Delete_Notification;
+        //        private ImageView Notificationpic;
         public NotificationHolder(@NonNull final View itemView) {
             super(itemView);
             Notificationmessage = itemView.findViewById(R.id.notification_message);
             Notificationtitle = itemView.findViewById(R.id.notification_title);
+            Notificationtimestamp = itemView.findViewById(R.id.timestamp);
 //            Delete_Notification = itemView.findViewById(R.id.delete_notification);
 //            Notificationpic = itemView.findViewById(R.id.notification_pic);
 

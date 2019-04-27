@@ -33,7 +33,7 @@ public class DashboardFragment extends Fragment {
     private Button preferenceBtn;
 
     private TextView Annualleave, MC, Leaveremain, Publicholiday;
-    private TextView Morningshift, Afternoonshift, Nightshift;
+    private TextView MON, TUE, WED, THU, FRI, SAT, SUN;
 
     private FirebaseDatabase firebaseDatabase;
     private FirebaseAuth mAuth;
@@ -55,40 +55,92 @@ public class DashboardFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        Morningshift = view.findViewById(R.id.txtmorningshift);
-        Afternoonshift = view.findViewById(R.id.txtafternoonshift);
-        Nightshift = view.findViewById(R.id.txtnightshift);
+        MON = view.findViewById(R.id.txtMonday);
+        TUE = view.findViewById(R.id.txtTueday);
+        WED = view.findViewById(R.id.txtWednesday);
+        THU = view.findViewById(R.id.txtThursday);
+        FRI = view.findViewById(R.id.txtFriday);
+        SAT = view.findViewById(R.id.txtSaturday);
+        SUN = view.findViewById(R.id.txtSunday);
 
-        DatabaseReference getmorningshift = firebaseDatabase.getReference().child("Work Shift").child(mAuth.getUid()).child("Morning Shift");
-        getmorningshift.addValueEventListener(new ValueEventListener() {
+        DatabaseReference getmonday = firebaseDatabase.getReference().child("official_duty_roster").child(mAuth.getUid()).child("MON");
+        getmonday.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String morningshift = dataSnapshot.getValue(String.class);
-                Morningshift.setText(morningshift);
+                String worktime = dataSnapshot.getValue(String.class);
+                MON.setText(worktime);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
 
-        DatabaseReference getafternoonshift = firebaseDatabase.getReference().child("Work Shift").child(mAuth.getUid()).child("Afternoon Shift");
-        getafternoonshift.addValueEventListener(new ValueEventListener() {
+        DatabaseReference gettueday = firebaseDatabase.getReference().child("official_duty_roster").child(mAuth.getUid()).child("TUE");
+        gettueday.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String afternoonshift = dataSnapshot.getValue(String.class);
-                Afternoonshift.setText(afternoonshift);
+                String worktime = dataSnapshot.getValue(String.class);
+                TUE.setText(worktime);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
 
-        DatabaseReference getnightshift = firebaseDatabase.getReference().child("Work Shift").child(mAuth.getUid()).child("Night Shift");
-        getnightshift.addValueEventListener(new ValueEventListener() {
+        DatabaseReference getwednesday = firebaseDatabase.getReference().child("official_duty_roster").child(mAuth.getUid()).child("WED");
+        getwednesday.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String nightshift = dataSnapshot.getValue(String.class);
-                Nightshift.setText(nightshift);
+                String worktime = dataSnapshot.getValue(String.class);
+                WED.setText(worktime);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        DatabaseReference getthursday = firebaseDatabase.getReference().child("official_duty_roster").child(mAuth.getUid()).child("THU");
+        getthursday.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String worktime = dataSnapshot.getValue(String.class);
+                THU.setText(worktime);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        DatabaseReference getfriday = firebaseDatabase.getReference().child("official_duty_roster").child(mAuth.getUid()).child("FRI");
+        getfriday.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String worktime = dataSnapshot.getValue(String.class);
+                FRI.setText(worktime);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        DatabaseReference getsaturday = firebaseDatabase.getReference().child("official_duty_roster").child(mAuth.getUid()).child("SAT");
+        getsaturday.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String worktime = dataSnapshot.getValue(String.class);
+                SAT.setText(worktime);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        DatabaseReference getsunday = firebaseDatabase.getReference().child("official_duty_roster").child(mAuth.getUid()).child("SUN");
+        getsunday.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String worktime = dataSnapshot.getValue(String.class);
+                SUN.setText(worktime);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -122,9 +174,13 @@ public class DashboardFragment extends Fragment {
         preferenceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(preferenceradio.getCheckedRadioButtonId() == -1){
+                    Toast.makeText(getActivity(),"Submit Error, No Shift Preference is Selected!", Toast.LENGTH_LONG).show();
+                }else{
                 DatabaseReference databaseReference = firebaseDatabase.getReference().child("Shift").child("Shift Preference").child(mAuth.getUid());
                 databaseReference.setValue(shiftpreference);
                 Toast.makeText(getActivity(), "Submit Preference Successful!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

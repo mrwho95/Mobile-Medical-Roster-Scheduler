@@ -7,14 +7,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -27,16 +24,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class Signin extends AppCompatActivity implements View.OnClickListener {
+public class Signup extends AppCompatActivity implements View.OnClickListener{
     private Button Register;
 
     private SignInButton signIn;
@@ -45,17 +36,15 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
     private GoogleApiClient mGoogleApiClient;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private String TAG = "Signin";
+    private String TAG = "Signup";
     ProgressBar progressBar;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signin);
+        setContentView(R.layout.activity_signup);
+
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Sign-in Options");
+        actionBar.setTitle("Sign-Up Options");
 
         progressBar = (ProgressBar)findViewById(R.id.progressbar);
         Register = (Button)findViewById(R.id.registerBtn);
@@ -70,7 +59,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 progressBar.setVisibility(View.GONE);
                 if (firebaseAuth.getCurrentUser() != null){
-                    startActivity(new Intent(Signin.this , Dashboard.class));
+                    startActivity(new Intent(Signup.this , Dashboard.class));
                 }
             }
         };
@@ -106,12 +95,12 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
-                        Toast.makeText(Signin.this,"Successfully Registered, Verification mail sent", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Signup.this,"Successfully Registered, Verification mail sent", Toast.LENGTH_LONG).show();
                         mAuth.signOut();
                         finish();
-                        startActivity(new Intent(Signin.this, MainActivity.class));
+                        startActivity(new Intent(Signup.this, MainActivity.class));
                     }else {
-                        Toast.makeText(Signin.this, "Verification mail hasn't been sent!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Signup.this, "Verification mail hasn't been sent!", Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -160,7 +149,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(Signin.this, "you are not able to log in to google", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Signup.this, "you are not able to log in to google", Toast.LENGTH_LONG).show();
                             updateUI(null);
                         }
 
@@ -188,11 +177,10 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view){
         switch (view.getId()){
             case R.id.registerBtn:
-                startActivity(new Intent(Signin.this, Register.class));
+                startActivity(new Intent(Signup.this, Register.class));
                 break;
 
         }
     }
 
 }
-

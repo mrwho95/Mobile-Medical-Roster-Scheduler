@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.EditText;
@@ -166,12 +167,20 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 
     private void senduserData(){
         String user_id = mAuth.getUid();
+        Log.d("Hello", "senduserData: "+ user_id);
+
+
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference myRef = firebaseDatabase.getReference().child("Users").child(mAuth.getUid());
         UserProfile userProfile = new UserProfile(fullname,email,password, staffID, age, handphone, homeaddress,
                 clinicianposition, department,hospital, user_id);
 //        UserProfile userProfile = new UserProfile(fullname,email,password);
         myRef.setValue(userProfile);
+        DatabaseReference userstatusref = FirebaseDatabase.getInstance().getReference("Users/"+ user_id + "/userstatus");
+        userstatusref.setValue("offline");
+        DatabaseReference userimageurl = FirebaseDatabase.getInstance().getReference("Users/"+ user_id + "/userImageurl");
+        userimageurl.setValue("defaults");
 //        myRef.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
