@@ -36,9 +36,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
     @Override
     public void onBindViewHolder(@NonNull NotificationHolder notificationHolder, int i) {
-        notificationHolder.Notificationtitle.setText(notificationmodels.get(i).getnotificationTitle());
-        notificationHolder.Notificationmessage.setText(notificationmodels.get(i).getnotificationMessage());
-        notificationHolder.Notificationtimestamp.setText(notificationmodels.get(i).getnotificationTimestamp());
+        notificationHolder.Notificationtitle.setText(notificationmodels.get(i).getNotificationTitle());
+        notificationHolder.Notificationmessage.setText(notificationmodels.get(i).getNotificationMessage());
+        notificationHolder.Notificationtimestamp.setText(notificationmodels.get(i).getNotificationTimestamp());
 
 //        if (notificationmodels.get(i).getNotificationprofilepic().equals("defaults")){
 //            notificationHolder.Notificationpic.setImageResource(R.mipmap.ic_launcher);

@@ -181,6 +181,15 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         userstatusref.setValue("offline");
         DatabaseReference userimageurl = FirebaseDatabase.getInstance().getReference("Users/"+ user_id + "/userImageurl");
         userimageurl.setValue("defaults");
+
+        DatabaseReference AL = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/Annual_Leave");
+        AL.setValue("20");
+        DatabaseReference PH = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/Public_Holiday");
+        PH.setValue("19");
+        DatabaseReference TL = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/Total_Leave");
+        TL.setValue("39");
+        DatabaseReference MC = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/Medical_Certificate");
+        MC.setValue("0");
 //        myRef.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

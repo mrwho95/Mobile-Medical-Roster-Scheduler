@@ -6,28 +6,41 @@ public class Notificationmodel {
 //    private String notificationmessage, notificationprofilepic, notificationtitle;
 //    private String notificationuserId;
 
-    private String Message, Title, Timestamp;
+      private String NotificationMessage, NotificationTimestamp, NotificationTitle;
 
-    public Notificationmodel(){
 
+      public Notificationmodel(){
+
+      }
+
+    public Notificationmodel(String notificationMessage, String notificationTimestamp, String notificationTitle) {
+        NotificationMessage = notificationMessage;
+        NotificationTimestamp = notificationTimestamp;
+        NotificationTitle = notificationTitle;
     }
 
-    public Notificationmodel(String Message, String Title, String Timestamp) {
-        this.Message = Message;
-        this.Title = Title;
-        this.Timestamp = Timestamp;
+    public String getNotificationMessage() {
+        return NotificationMessage;
     }
 
-    public String getnotificationMessage() {
-        return Message;
+    public void setNotificationMessage(String notificationMessage) {
+        NotificationMessage = notificationMessage;
     }
 
-    public String getnotificationTitle() {
-        return Title;
+    public String getNotificationTimestamp() {
+        return NotificationTimestamp;
     }
 
-    public String getnotificationTimestamp() {
-        return Timestamp;
+    public void setNotificationTimestamp(String notificationTimestamp) {
+        NotificationTimestamp = notificationTimestamp;
+    }
+
+    public String getNotificationTitle() {
+        return NotificationTitle;
+    }
+
+    public void setNotificationTitle(String notificationTitle) {
+        NotificationTitle = notificationTitle;
     }
 
     //    public Notificationmodel(String notificationmessage, String notificationtitle, String userId) {
