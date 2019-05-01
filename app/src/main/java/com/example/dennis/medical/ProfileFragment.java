@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +54,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements View.OnClickListener{
 
     GoogleSignInClient mGoogleSignInClient;
     private GoogleApiClient mGoogleApiClient;
@@ -68,6 +69,7 @@ public class ProfileFragment extends Fragment {
     private FirebaseStorage firebaseStorage;
     private ImageView profilePic;
     private String downloadProfileUrl;
+    ProgressBar progressBar;
 
     private static int PICK_IMAGE = 123;
     Uri ImageUri;
@@ -104,6 +106,8 @@ public class ProfileFragment extends Fragment {
         profileHospital = view.findViewById(R.id.userHospital);
         profileHP = view.findViewById(R.id.userHP);
         profilePic = view.findViewById(R.id.userProfilePic);
+        progressBar = view.findViewById(R.id.progressBar3);
+        progressBar.setVisibility(View.GONE);
 
         firebaseDatabase = firebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -156,117 +160,71 @@ public class ProfileFragment extends Fragment {
         });
 
         Button buttoneditprofile = (Button)view.findViewById(R.id.btn_edit_profile_button);
-        buttoneditprofile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent editprofile = new Intent(getActivity(), UpdateProfile.class);
-                startActivity(editprofile);
-            }
-        });
+        buttoneditprofile.setOnClickListener(this);
 
         Button uploadprofilepic = (Button)view.findViewById(R.id.btn_uploadpic);
-        uploadprofilepic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final StorageReference imageReference = sendpic.child(mAuth.getUid()).child("Images").child("Profile_Pic");
-//                final StorageReference imageReference = sendpic.child(mAuth.getUid()).child("Images").child(ImageUri.getLastPathSegment() + "jpg");
-               final UploadTask uploadTask = imageReference.putFile(ImageUri);
-                uploadTask.addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        String message = e.toString();
-                        Toast.makeText(getActivity(),"Error: "+ message, Toast.LENGTH_LONG).show();
-                    }
-                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Toast.makeText(getActivity(), "Image upload Successfully!", Toast.LENGTH_LONG).show();
-                        Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                            @Override
-                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                if (!task.isSuccessful()){
-                                    throw task.getException();
-                                }
-                                downloadProfileUrl = imageReference.getDownloadUrl().toString();
-                                return imageReference.getDownloadUrl();
-                            }
-                        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Uri> task) {
-                                if (task.isSuccessful()) {
-                                    downloadProfileUrl = task.getResult().toString();
-                                    firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("userImageurl").setValue(downloadProfileUrl);
-
-
-                                }
-                            }
-                        });
-                    }
-                });
-
-
-//                uploadTask.addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(getActivity(),"Upload Profile Picture Failed!", Toast.LENGTH_LONG).show();
-//                    }
-//                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-////                        String image = taskSnapshot.getDownloadUrl().toString());
-//                        Toast.makeText(getActivity(),"Upload Profile Picture Successful!", Toast.LENGTH_LONG).show();
-//                    }
-//                });
-
-            }
-        });
-
-//        Intent intent = new Intent(getActivity().getBaseContext(),UpdateProfile.class);
-//        intent.putExtra("Url_Key", downloadProfileUrl);
-//        startActivity(intent);
-
-//        buttonsignout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-//                        new ResultCallback<Status>() {
-//                            @Override
-//                            public void onResult(Status status) {
-//                                mGoogleSignInClient.signOut();
-//                                Toast.makeText(getApplicationContext(),"Logged Out",Toast.LENGTH_LONG).show();
-//                                Intent i=new Intent(getActivity(),MainActivity.class);
-//                                startActivity(i);
-//                            }
-//                        });
-//            }
-//        });
+        uploadprofilepic.setOnClickListener(this);
 
         return view;
     }
 
+    private void imageurl(){
+        progressBar.setVisibility(View.VISIBLE);
+        final StorageReference sendpic = firebaseStorage.getReference();
+        final StorageReference imageReference = sendpic.child(mAuth.getUid()).child("Images").child("Profile_Pic");
+//                final StorageReference imageReference = sendpic.child(mAuth.getUid()).child("Images").child(ImageUri.getLastPathSegment() + "jpg");
+        final UploadTask uploadTask = imageReference.putFile(ImageUri);
+
+        uploadTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                String message = e.toString();
+                Toast.makeText(getActivity(),"Error: "+ message, Toast.LENGTH_LONG).show();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(getActivity(), "Image upload Successfully!", Toast.LENGTH_LONG).show();
+                Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                        if (!task.isSuccessful()){
+                            throw task.getException();
+                        }
+                        progressBar.setVisibility(View.GONE);
+                        downloadProfileUrl = imageReference.getDownloadUrl().toString();
+                        return imageReference.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+
+                        if (task.isSuccessful()) {
+                            downloadProfileUrl = task.getResult().toString();
+                            firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("userImageurl").setValue(downloadProfileUrl);
+
+                        }else {
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View view){
+        switch (view.getId()){
+            case R.id.btn_edit_profile_button:
+               startActivity(new Intent(getActivity(), UpdateProfile.class));
+            break;
+
+            case R.id.btn_uploadpic:
+                imageurl();
+                break;
+        }
+
+    }
 
 
-//        buttonsignout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent signout = new Intent(getActivity(), MainActivity.class);
-//                startActivity(signout);
-//            }
-//        });
-
-
-
-//
-//        @Override
-//        protected void onStart() {
-//            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                    .requestEmail()
-//                    .build();
-//            mGoogleApiClient = new GoogleApiClient.Builder(this)
-//                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-//                    .build();
-//            mGoogleApiClient.connect();
-//            super.onStart();
-//        }
 }
