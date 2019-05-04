@@ -32,7 +32,7 @@ public class DashboardFragment extends Fragment {
     private RadioButton shiftoptionradio;
     private Button preferenceBtn;
 
-    private TextView Annualleave, MC, Leaveremain, Publicholiday;
+    private TextView Annualleave, MC, Leaveremain, Publicholiday,SelectedPreference, leavestatus;
     private TextView MON, TUE, WED, THU, FRI, SAT, SUN;
 
     private FirebaseDatabase firebaseDatabase;
@@ -184,10 +184,38 @@ public class DashboardFragment extends Fragment {
             }
         });
 
+        SelectedPreference = view.findViewById(R.id.txtShiftPreferenceSelected);
+        DatabaseReference getshiftpreference = FirebaseDatabase.getInstance().getReference().child("Shift").child("Shift Preference").child(mAuth.getUid());
+        getshiftpreference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String sp = dataSnapshot.getValue(String.class);
+                SelectedPreference.setText(sp);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         Publicholiday = view.findViewById(R.id.txtpublicholiday);
         Annualleave = view.findViewById(R.id.txtannualleave);
         MC = view.findViewById(R.id.txtmc);
         Leaveremain = view.findViewById(R.id.txtleaveremain);
+        leavestatus = view.findViewById(R.id.txtleavependingstatus);
+
+        DatabaseReference getleavestatus = firebaseDatabase.getReference().child("Medical Leave").child(mAuth.getUid()).child("leavestatus");
+        getleavestatus.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String Leavestatus = dataSnapshot.getValue(String.class);
+                leavestatus.setText(Leavestatus);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
 
         DatabaseReference leavedisplay = firebaseDatabase.getReference().child("Medical Leave").child(mAuth.getUid());
         leavedisplay.addValueEventListener(new ValueEventListener() {

@@ -9,8 +9,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +27,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Register extends AppCompatActivity implements View.OnClickListener{
 
     private EditText Email;
@@ -35,6 +41,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 
     DatabaseReference databaseReference;
 
+    Spinner HospitalSpinner, DepartmentSpinner, PositionSpinner;
 
 
 
@@ -55,9 +62,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         Age = (EditText) findViewById(R.id.userAge);
         Handphone = (EditText) findViewById(R.id.userHandphone);
         HomeAddress = (EditText) findViewById(R.id.userHomeAddress);
-        Position = (EditText) findViewById(R.id.userPosition);
-        Department = (EditText) findViewById(R.id.userDepartment);
-        Hospital = (EditText) findViewById(R.id.userHospital);
+//        Position = (EditText) findViewById(R.id.userPosition);
+//        Department = (EditText) findViewById(R.id.userDepartment);
+//        Hospital = (EditText) findViewById(R.id.userHospital);
+        HospitalSpinner = (Spinner)findViewById(R.id.spinnerhospital);
+        DepartmentSpinner = (Spinner)findViewById(R.id.spinnerdepartment);
+        PositionSpinner = (Spinner)findViewById(R.id.spinnerposition);
 
         progressBar = (ProgressBar) findViewById(R.id.progressbar2);
 
@@ -66,7 +76,85 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
+        //Hospital list
+        List<String> hospitallist = new ArrayList<>();
+        hospitallist.add("Pusat Rawatan Warga UMS");
+        hospitallist.add("Queen Elizabeth Hospital I");
+        hospitallist.add("Queen Elizabeth Hospital II");
+        hospitallist.add("Rafflesia Medical Centre");
+        hospitallist.add("Hospital Wanita Dan Kanak-Kanak Sabah");
+        hospitallist.add("KPJ Damai Specialist Hospital");
+        hospitallist.add("Gleneagles Kota Kinabalu");
+        hospitallist.add("Jesselton Medical Centre Kota Kinabalu");
 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  hospitallist);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        HospitalSpinner.setAdapter(adapter);
+        HospitalSpinner.getSelectedItem().toString();
+        HospitalSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String itemvalue = parent.getItemAtPosition(position).toString();
+                Toast.makeText(Register.this,  itemvalue + " is selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //department list
+        List<String> departmentlist = new ArrayList<>();
+        departmentlist.add("Critical Care");
+        departmentlist.add("Accident and Emergency");
+        departmentlist.add("Anaesthetics");
+        departmentlist.add("Cardiology");
+        departmentlist.add("General Surgery");
+        departmentlist.add("Nurition and Dietetics");
+        departmentlist.add("Occupational Therapy");
+        departmentlist.add("Physiotherapy");
+        departmentlist.add("Pharmacy");
+        departmentlist.add("Urology");
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  departmentlist);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        DepartmentSpinner.setAdapter(adapter2);
+        DepartmentSpinner.getSelectedItem().toString();
+        DepartmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String itemvalue2 = parent.getItemAtPosition(position).toString();
+                Toast.makeText(Register.this,  itemvalue2 + " is selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //department list
+        List<String> positionlist = new ArrayList<>();
+        positionlist.add("Nurse");
+        positionlist.add("Doctor");
+
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  positionlist);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        PositionSpinner.setAdapter(adapter3);
+        PositionSpinner.getSelectedItem().toString();
+        PositionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String itemvalue3 = parent.getItemAtPosition(position).toString();
+                Toast.makeText(Register.this,  itemvalue3 + " is selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -78,9 +166,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         age = Age.getText().toString().trim();
         handphone = Handphone.getText().toString().trim();
         homeaddress = HomeAddress.getText().toString().trim();
-        clinicianposition = Position.getText().toString().trim();
-        department = Department.getText().toString().trim();
-        hospital = Hospital.getText().toString().trim();
+        clinicianposition = PositionSpinner.getSelectedItem().toString();
+        department = DepartmentSpinner.getSelectedItem().toString();
+        hospital = HospitalSpinner.getSelectedItem().toString();
 
 
         if (fullname.isEmpty()){
@@ -147,7 +235,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                     //Intent intent = new Intent(Signin.this, MainActivity.class);
                     // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     //startActivity(intent);
-                    if (!TextUtils.isEmpty(fullname))
+                    if (!TextUtils.isEmpty(staffID) || !TextUtils.isEmpty(password))
+//                        checkstaffID();
                     senduserData();
                     Toast.makeText(getApplicationContext(), "Clinician Account Registered Successful", Toast.LENGTH_LONG).show();
                     finish();
@@ -161,6 +250,28 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
+            }
+        });
+    }
+
+    private void  checkstaffID(){
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference checkstaffID = firebaseDatabase.getReference().child("Users").child(mAuth.getUid());
+        checkstaffID.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()){
+                    if (!data.getValue(UserProfile.class).getuserStaffID().equals(staffID)) {
+                       //senduserData();
+                    } else {
+                        Toast.makeText(Register.this, "Staff ID already exists.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
@@ -190,6 +301,23 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         TL.setValue("39");
         DatabaseReference MC = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/Medical_Certificate");
         MC.setValue("0");
+        DatabaseReference Leavestartdate = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/leavestartdate");
+        Leavestartdate.setValue("-");
+        DatabaseReference Leaveenddate = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/leaveenddate");
+        Leaveenddate.setValue("-");
+        DatabaseReference Leavepending = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/leavestatus");
+        Leavepending.setValue("No pending status");
+        DatabaseReference Leavereason = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/leavereason");
+        Leavereason.setValue("-");
+        DatabaseReference Leaveduration = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/leaveduration");
+        Leaveduration.setValue("-");
+        DatabaseReference clinician_cover = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/clinician_cover");
+        clinician_cover.setValue("-");
+        DatabaseReference Leavetype = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/leavetype");
+        Leavetype.setValue("-");
+        DatabaseReference MLName = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/Name");
+        MLName.setValue(fullname);
+
 //        myRef.addValueEventListener(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

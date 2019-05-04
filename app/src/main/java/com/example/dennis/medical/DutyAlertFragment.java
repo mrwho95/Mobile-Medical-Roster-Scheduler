@@ -57,7 +57,7 @@ public class DutyAlertFragment extends Fragment {
     }
 
 //    private static final String Notification_URL = "http://127.0.0.1/Medical/secret/notificationapi.php";
-    private static final String Notification_URL = "http://10.114.44.244/Medical/secret/notificationapi.php";
+//    private static final String Notification_URL = "http://10.114.44.244/Medical/secret/notificationapi.php";
 
     private RecyclerView NotificationRecycleView;
     private DatabaseReference databaseReference;

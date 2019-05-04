@@ -19,7 +19,7 @@
         <android.support.v7.widget.CardView
             android:id="@+id/cardView2"
             android:layout_width="380dp"
-            android:layout_height="190dp"
+            android:layout_height="300dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -124,48 +124,48 @@
                     android:id="@+id/textView35"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
                     android:text="Friday:"
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
-                    app:layout_constraintEnd_toStartOf="@+id/txtFriday"
-                    app:layout_constraintTop_toBottomOf="@+id/textView60" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
                 <TextView
                     android:id="@+id/textView36"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
                     android:text="Saturday:"
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
-                    app:layout_constraintEnd_toStartOf="@+id/txtSaturday"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
                 <TextView
                     android:id="@+id/txtFriday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="64dp"
                     android:text="ND"
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView60" />
+                    app:layout_constraintStart_toEndOf="@+id/textView35"
+                    app:layout_constraintTop_toBottomOf="@+id/txtThursday" />
 
                 <TextView
                     android:id="@+id/txtSaturday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="64dp"
                     android:text="ND"
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView36"
                     app:layout_constraintTop_toBottomOf="@+id/txtFriday" />
 
                 <TextView
@@ -175,8 +175,8 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:text="Thursday:"
-                    android:textSize="16dp"
                     android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
@@ -196,24 +196,24 @@
                     android:id="@+id/textView41"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
                     android:text="Sunday:"
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
-                    app:layout_constraintEnd_toStartOf="@+id/txtSunday"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
                 <TextView
                     android:id="@+id/txtSunday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="64dp"
                     android:text="AM"
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView41"
                     app:layout_constraintTop_toBottomOf="@+id/txtSaturday" />
             </android.support.constraint.ConstraintLayout>
 
@@ -223,7 +223,7 @@
         <android.support.v7.widget.CardView
             android:id="@+id/cardView8"
             android:layout_width="380dp"
-            android:layout_height="270dp"
+            android:layout_height="300dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
@@ -286,7 +286,7 @@
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView61" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
                 <TextView
                     android:id="@+id/textView28"
@@ -348,7 +348,7 @@
                     android:textColor="@color/color_Dark"
                     android:textSize="16dp"
                     app:layout_constraintStart_toEndOf="@+id/textView24"
-                    app:layout_constraintTop_toBottomOf="@+id/textView61" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtleavependingstatus" />
 
                 <TextView
                     android:id="@+id/txtpublicholiday"
@@ -360,6 +360,29 @@
                     android:textSize="16dp"
                     app:layout_constraintStart_toEndOf="@+id/textView59"
                     app:layout_constraintTop_toBottomOf="@+id/txtannualleave" />
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Apply Leave Status:"
+                    android:textSize="16dp"
+                    android:textColor="@color/color_Dark"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView61" />
+
+                <TextView
+                    android:id="@+id/txtleavependingstatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView37"
+                    app:layout_constraintTop_toBottomOf="@+id/textView61" />
             </android.support.constraint.ConstraintLayout>
 
         </android.support.v7.widget.CardView>
@@ -367,7 +390,7 @@
         <android.support.v7.widget.CardView
             android:id="@+id/cardView9"
             android:layout_width="380dp"
-            android:layout_height="220dp"
+            android:layout_height="280dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
@@ -383,15 +406,13 @@
                     android:id="@+id/SubmitPreferenceBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
 
                     android:background="@drawable/buttonstyle"
                     android:text="Submit"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/PreferenceRadio" />
+                    app:layout_constraintEnd_toEndOf="parent" />
 
                 <TextView
                     android:id="@+id/textView57"
@@ -497,6 +518,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
                 <TextView
+                    android:id="@+id/textView40"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="108dp"
@@ -507,6 +529,29 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
+                <TextView
+                    android:id="@+id/textview111"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Selected Shift Preference:"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/PreferenceRadio" />
+
+                <TextView
+                    android:id="@+id/txtShiftPreferenceSelected"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="18dp"
+                    android:text="-"
+                    android:textColor="@color/color_Dark"
+                    android:textSize="16dp"
+                    app:layout_constraintStart_toEndOf="@+id/textview111"
+                    app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
 
             </android.support.constraint.ConstraintLayout>

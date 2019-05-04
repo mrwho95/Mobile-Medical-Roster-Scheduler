@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -62,13 +63,15 @@ public class Leave extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calendar c = Calendar.getInstance();
+                final SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy");
                 final int year = c.get(Calendar.YEAR);
                 final int month = c.get(Calendar.MONTH);
                 final int day = c.get(Calendar.DAY_OF_MONTH);
                 dpd1 = new DatePickerDialog(Leave.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        startdate.setText(dayOfMonth+ "/" +(month+1)+ "/" + year);
+                        String date = String.format("%02d/%02d/%d", dayOfMonth,month+1,year);
+                        startdate.setText(date);
                     }
                 },year, month, day);
                 dpd1.show();
@@ -84,7 +87,8 @@ public class Leave extends AppCompatActivity {
                 dpd2 = new DatePickerDialog(Leave.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        enddate.setText(dayOfMonth+ "/" +(month+1)+ "/" + year);
+                        String date1 = String.format("%02d/%02d/%d", dayOfMonth,month+1,year);
+                        enddate.setText(date1);
                     }
                 },year, month, day);
                 dpd2.show();
@@ -146,6 +150,7 @@ public class Leave extends AppCompatActivity {
                         TxTcliniciancover = txtcliniciancover.getText().toString().trim();
                         medicalleave = leaveoption.getText().toString().trim();
                         onleaveduration = leaveduration.getText().toString().trim();
+                        String value1 = "Pending";
                         HashMap<String, Object>hashMap = new HashMap<>();
                         hashMap.put("clinician_cover", TxTcliniciancover );
                         hashMap.put("leaveduration", onleaveduration);
@@ -153,6 +158,7 @@ public class Leave extends AppCompatActivity {
                         hashMap.put("leaveenddate", EndDate);
                         hashMap.put("leavetype", medicalleave);
                         hashMap.put("leavestartdate", StartDate);
+                        hashMap.put("leavestatus", value1);
                         leaveRef.updateChildren(hashMap);
                         LeaveAL(onleaveduration);
                         Toast.makeText(Leave.this, "Submit Leave Application Successful!", Toast.LENGTH_LONG).show();
@@ -182,6 +188,7 @@ public class Leave extends AppCompatActivity {
                         TxTcliniciancover = txtcliniciancover.getText().toString().trim();
                         medicalleave = leaveoption.getText().toString().trim();
                         onleaveduration = leaveduration.getText().toString().trim();
+                        String value2 = "Pending";
                         HashMap<String, Object>hashMap3 = new HashMap<>();
                         hashMap3.put("clinician_cover", TxTcliniciancover );
                         hashMap3.put("leaveduration", onleaveduration);
@@ -189,6 +196,7 @@ public class Leave extends AppCompatActivity {
                         hashMap3.put("leaveenddate", EndDate);
                         hashMap3.put("leavetype", medicalleave);
                         hashMap3.put("leavestartdate", StartDate);
+                        hashMap3.put("leavestatus", value2);
                         leaveRef.updateChildren(hashMap3);
                         LeavePH(onleaveduration);
                         Toast.makeText(Leave.this, "Submit Leave Application Successful!", Toast.LENGTH_LONG).show();
@@ -231,7 +239,7 @@ public class Leave extends AppCompatActivity {
                     Toast.makeText(Leave.this, "Leave Duration is required", Toast.LENGTH_LONG).show();
                     return;
                 }
-
+                String value = "Pending";
                 FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
                 DatabaseReference leaveRef = firebaseDatabase.getReference().child("Medical Leave").child(mAuth.getUid());
                 HashMap<String, Object>hashMap = new HashMap<>();
@@ -240,6 +248,7 @@ public class Leave extends AppCompatActivity {
                 hashMap.put("leavereason", TxTreason);
                 hashMap.put("leaveenddate", EndDate);
                 hashMap.put("leavestartdate", StartDate);
+                hashMap.put("leavestatus",value);
                 leaveRef.updateChildren(hashMap);
                 Toast.makeText(Leave.this, "Submit Leave Application Successful!", Toast.LENGTH_LONG).show();
             }
