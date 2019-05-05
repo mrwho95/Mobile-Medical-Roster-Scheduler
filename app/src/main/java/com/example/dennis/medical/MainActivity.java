@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.sign_inoptions:
-                startActivity(new Intent(MainActivity.this, Signup.class));
+                startActivity(new Intent(MainActivity.this, Register.class));
                 break;
         }
     }
