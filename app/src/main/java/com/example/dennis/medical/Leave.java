@@ -127,11 +127,6 @@ public class Leave extends AppCompatActivity {
             }
         });
 
-        final int TotalLeave = 39;
-        final int MC = 0;
-        final int AL = 20;
-        final int PH = 19;
-
 
         txtcliniciancover = (EditText)findViewById(R.id.txtcliniciancoverxml);
         txtreason = (EditText)findViewById(R.id.txtreasonxml);
@@ -203,6 +198,63 @@ public class Leave extends AppCompatActivity {
                         break;
                     default:
                 }
+
+//                DatabaseReference leaveRef1 = firebaseDatabase.getReference().child("medical_table").child(mAuth.getUid());
+//                switch (checkedId){
+//                    case R.id.RadioAL:
+//                        TxTreason = txtreason.getText().toString().trim();
+//                        StartDate = startdate.getText().toString().trim();
+//                        EndDate = enddate.getText().toString().trim();
+//                        TxTcliniciancover = txtcliniciancover.getText().toString().trim();
+//                        medicalleave = leaveoption.getText().toString().trim();
+//                        onleaveduration = leaveduration.getText().toString().trim();
+//                        String value3 = "Pending";
+//                        HashMap<String, Object>hashMap4 = new HashMap<>();
+//                        hashMap4.put("clinician_cover", TxTcliniciancover );
+//                        hashMap4.put("leaveduration", onleaveduration);
+//                        hashMap4.put("leavereason", TxTreason);
+//                        hashMap4.put("leaveenddate", EndDate);
+//                        hashMap4.put("leavetype", medicalleave);
+//                        hashMap4.put("leavestartdate", StartDate);
+//                        hashMap4.put("leavestatus", value3);
+//                        leaveRef1.updateChildren(hashMap4);
+//                        break;
+//                    case R.id.RadioMC:
+//                        TxTreason = txtreason.getText().toString().trim();
+//                        StartDate = startdate.getText().toString().trim();
+//                        EndDate = enddate.getText().toString().trim();
+//                        TxTcliniciancover = txtcliniciancover.getText().toString().trim();
+//                        medicalleave = leaveoption.getText().toString().trim();
+//                        onleaveduration = leaveduration.getText().toString().trim();
+//                        HashMap<String, Object>hashMap5 = new HashMap<>();
+//                        hashMap5.put("clinician_cover", TxTcliniciancover );
+//                        hashMap5.put("leaveduration", onleaveduration);
+//                        hashMap5.put("leavereason", TxTreason);
+//                        hashMap5.put("leaveenddate", EndDate);
+//                        hashMap5.put("leavetype", medicalleave);
+//                        hashMap5.put("leavestartdate", StartDate);
+//                        leaveRef1.updateChildren(hashMap5);
+//                        break;
+//                    case R.id.RadioPH:
+//                        TxTreason = txtreason.getText().toString().trim();
+//                        StartDate = startdate.getText().toString().trim();
+//                        EndDate = enddate.getText().toString().trim();
+//                        TxTcliniciancover = txtcliniciancover.getText().toString().trim();
+//                        medicalleave = leaveoption.getText().toString().trim();
+//                        onleaveduration = leaveduration.getText().toString().trim();
+//                        String value4 = "Pending";
+//                        HashMap<String, Object>hashMap6 = new HashMap<>();
+//                        hashMap6.put("clinician_cover", TxTcliniciancover );
+//                        hashMap6.put("leaveduration", onleaveduration);
+//                        hashMap6.put("leavereason", TxTreason);
+//                        hashMap6.put("leaveenddate", EndDate);
+//                        hashMap6.put("leavetype", medicalleave);
+//                        hashMap6.put("leavestartdate", StartDate);
+//                        hashMap6.put("leavestatus", value4);
+//                        leaveRef1.updateChildren(hashMap6);
+//                        break;
+//                    default:
+//                }
 
             }
         });

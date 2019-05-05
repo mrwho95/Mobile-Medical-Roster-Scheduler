@@ -65,7 +65,7 @@
                         android:layout_weight="1"
                         android:background="#ffffff"
                         android:gravity="center"
-                        android:text="13/5/2019 - 17/5/2019"
+
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
@@ -92,7 +92,7 @@
                         android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="AM"
+
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
@@ -124,7 +124,7 @@
                         android:layout_weight="1"
                         android:background="#ffffff"
                         android:gravity="center"
-                        android:text="AM"
+
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
@@ -152,7 +152,7 @@
                         android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="ND"
+
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
@@ -182,7 +182,7 @@
                         android:layout_weight="1"
                         android:background="#ffffff"
                         android:gravity="center"
-                        android:text="ND"
+
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
@@ -241,7 +241,7 @@
                         android:layout_weight="1"
                         android:background="#ffffff"
                         android:gravity="center"
-                        android:text="PM"
+
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
@@ -270,7 +270,7 @@
                         android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="PM"
+
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 

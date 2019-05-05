@@ -82,6 +82,46 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getApplicationContext().getContentResolver(), ImageUri);
                 profilePic.setImageBitmap(bitmap);
+                progressBar.setVisibility(View.VISIBLE);
+                final StorageReference sendpic = firebaseStorage.getReference();
+                final StorageReference imageReference = sendpic.child(mAuth.getUid()).child("Images").child("Profile_Pic");
+//                final StorageReference imageReference = sendpic.child(mAuth.getUid()).child("Images").child(ImageUri.getLastPathSegment() + "jpg");
+                final UploadTask uploadTask = imageReference.putFile(ImageUri);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        String message = e.toString();
+                        Toast.makeText(getActivity(),"Error: "+ message, Toast.LENGTH_LONG).show();
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(getActivity(), "Image upload Successfully!", Toast.LENGTH_LONG).show();
+                        Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                            @Override
+                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                                if (!task.isSuccessful()){
+                                    throw task.getException();
+                                }
+                                progressBar.setVisibility(View.GONE);
+                                downloadProfileUrl = imageReference.getDownloadUrl().toString();
+                                return imageReference.getDownloadUrl();
+                            }
+                        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+
+                                if (task.isSuccessful()) {
+                                    downloadProfileUrl = task.getResult().toString();
+                                    firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("userImageurl").setValue(downloadProfileUrl);
+
+                                }else {
+                                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                    }
+                });
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -162,54 +202,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         Button buttoneditprofile = (Button)view.findViewById(R.id.btn_edit_profile_button);
         buttoneditprofile.setOnClickListener(this);
 
-        Button uploadprofilepic = (Button)view.findViewById(R.id.btn_uploadpic);
-        uploadprofilepic.setOnClickListener(this);
-
         return view;
-    }
-
-    private void imageurl(){
-        progressBar.setVisibility(View.VISIBLE);
-        final StorageReference sendpic = firebaseStorage.getReference();
-        final StorageReference imageReference = sendpic.child(mAuth.getUid()).child("Images").child("Profile_Pic");
-//                final StorageReference imageReference = sendpic.child(mAuth.getUid()).child("Images").child(ImageUri.getLastPathSegment() + "jpg");
-        final UploadTask uploadTask = imageReference.putFile(ImageUri);
-
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                String message = e.toString();
-                Toast.makeText(getActivity(),"Error: "+ message, Toast.LENGTH_LONG).show();
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(getActivity(), "Image upload Successfully!", Toast.LENGTH_LONG).show();
-                Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                    @Override
-                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                        if (!task.isSuccessful()){
-                            throw task.getException();
-                        }
-                        progressBar.setVisibility(View.GONE);
-                        downloadProfileUrl = imageReference.getDownloadUrl().toString();
-                        return imageReference.getDownloadUrl();
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-
-                        if (task.isSuccessful()) {
-                            downloadProfileUrl = task.getResult().toString();
-                            firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("userImageurl").setValue(downloadProfileUrl);
-
-                        }else {
-                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-            }
-        });
     }
 
     @Override
@@ -219,9 +212,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                startActivity(new Intent(getActivity(), UpdateProfile.class));
             break;
 
-            case R.id.btn_uploadpic:
-                imageurl();
-                break;
         }
 
     }
