@@ -78,7 +78,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
-                        android:weightSum="3">
+                        android:weightSum="2">
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -130,30 +130,30 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:orientation="vertical">
+                        <!--<LinearLayout-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_weight="1"-->
+                            <!--android:gravity="center"-->
+                            <!--android:orientation="vertical">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Hospital"
-                                android:textColor="@color/color_Dark"
-                                android:textSize="20sp" />
+                            <!--<TextView-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:text="Hospital"-->
+                                <!--android:textColor="@color/color_Dark"-->
+                                <!--android:textSize="20sp" />-->
 
-                            <TextView
-                                android:id="@+id/userHospital"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="10dp"
-                                android:textColor="@color/color_Dark"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
+                            <!--<TextView-->
+                                <!--android:id="@+id/userHospital"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:paddingTop="10dp"-->
+                                <!--android:textColor="@color/color_Dark"-->
+                                <!--android:textSize="20sp"-->
+                                <!--android:textStyle="bold" />-->
 
-                        </LinearLayout>
+                        <!--</LinearLayout>-->
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
             </android.support.constraint.ConstraintLayout>
@@ -166,12 +166,35 @@
                     android:layout_width="360dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="40dp"
+                    android:layout_marginTop="50dp"
                     android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="25dp"
+                        android:layout_marginTop="30dp">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_clinician" />
+
+                        <TextView
+                            android:id="@+id/userHospital"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingLeft="20dp"
+                            android:textColor="@color/color_Dark"
+                            android:textStyle="bold"
+                            />
+                    </LinearLayout>
 
 
                     <LinearLayout
-                        android:layout_marginTop="30dp"
+                        android:layout_marginTop="25dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"

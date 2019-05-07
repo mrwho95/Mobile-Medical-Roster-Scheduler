@@ -74,8 +74,12 @@ public class DutyAlertFragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
 
         NotificationRecycleView = view.findViewById(R.id.notificationrecycleview);
-        NotificationRecycleView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        NotificationRecycleView.setLayoutManager(linearLayoutManager);
         NotificationRecycleView.setHasFixedSize(true);
+
         notificationmodels = new ArrayList<>();
 
 //        loadnotification();

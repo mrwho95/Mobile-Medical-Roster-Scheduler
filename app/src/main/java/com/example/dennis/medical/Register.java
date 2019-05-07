@@ -134,27 +134,27 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             }
         });
 
-        //department list
-        List<String> positionlist = new ArrayList<>();
-        positionlist.add("Nurse");
-        positionlist.add("Doctor");
+            //position list
+            List<String> positionlist = new ArrayList<>();
+            positionlist.add("Nurse");
+            positionlist.add("Doctor");
 
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  positionlist);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        PositionSpinner.setAdapter(adapter3);
-        PositionSpinner.getSelectedItem().toString();
-        PositionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String itemvalue3 = parent.getItemAtPosition(position).toString();
-                Toast.makeText(Register.this,  itemvalue3 + " is selected", Toast.LENGTH_LONG).show();
-            }
+            ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  positionlist);
+            adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            PositionSpinner.setAdapter(adapter3);
+            PositionSpinner.getSelectedItem().toString();
+            PositionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    String itemvalue3 = parent.getItemAtPosition(position).toString();
+                    Toast.makeText(Register.this,  itemvalue3 + " is selected", Toast.LENGTH_LONG).show();
+                }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
+                }
+            });
 
     }
 
@@ -196,11 +196,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             Password.requestFocus();
             return;
         }
-        if (department.isEmpty()){
-            Department.setError("Department Name is required");
-            Department.requestFocus();
-            return;
-        }
         if (age.isEmpty()){
             Age.setError("Age is required");
             Age.requestFocus();
@@ -216,16 +211,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
             HomeAddress.requestFocus();
             return;
         }
-        if (clinicianposition.isEmpty()){
-            Position.setError("Position is required");
-            Position.requestFocus();
-            return;
-        }
-        if (hospital.isEmpty()){
-            Hospital.setError("Hospital Name is required");
-            Hospital.requestFocus();
-            return;
-        }
+
         progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -317,6 +303,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         Leavetype.setValue("-");
         DatabaseReference MLName = FirebaseDatabase.getInstance().getReference("Medical Leave/" + user_id + "/Name");
         MLName.setValue(fullname);
+        DatabaseReference shift_preference = FirebaseDatabase.getInstance().getReference("Shift/Shift Preference/" + user_id);
+        shift_preference.setValue("No status");
 
 //        myRef.addValueEventListener(new ValueEventListener() {
 //            @Override

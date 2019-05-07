@@ -11,10 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,13 +38,16 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class UpdateProfile extends AppCompatActivity {
     private EditText newEmail;
     private EditText newPassword;
-    private EditText newFullName, newStaffID, newAge, newHandphone, newHomeAddress, newPosition, newDepartment, newHospital;
+    private EditText newFullName, newStaffID, newAge, newHandphone, newHomeAddress;
     String  fullname,email,password,staffID,age,handphone, homeaddress, clinicianposition, department, hospital;
+    Spinner newPosition, newDepartment, newHospital;
 
     private ImageView userProfilePic;
 
@@ -90,9 +96,11 @@ public class UpdateProfile extends AppCompatActivity {
         newAge = (EditText) findViewById(R.id.userAge);
         newHandphone = (EditText) findViewById(R.id.userHandphone);
         newHomeAddress = (EditText) findViewById(R.id.userHomeAddress);
-        newPosition = (EditText) findViewById(R.id.userPosition);
-        newDepartment = (EditText) findViewById(R.id.userDepartment);
-        newHospital = (EditText) findViewById(R.id.userHospital);
+
+
+        newPosition = (Spinner) findViewById(R.id.userPosition);
+        newDepartment = (Spinner) findViewById(R.id.userDepartment);
+        newHospital = (Spinner) findViewById(R.id.userHospital);
 
         Updatedata = (Button)findViewById(R.id.updateBtn);
 
@@ -130,11 +138,11 @@ public class UpdateProfile extends AppCompatActivity {
                 newFullName.setText(userProfile.getuserFullName());
                 newEmail.setText(userProfile.getuserEmail());
                 newAge.setText(userProfile.getuserAge());
-                newDepartment.setText(userProfile.getuserDepartment());
+//                newDepartment.setText(userProfile.getuserDepartment());
                 newHomeAddress.setText(userProfile.getuserHomeAddress());
-                newHospital.setText(userProfile.getuserHospital());
+//                newHospital.setText(userProfile.getuserHospital());
                 newHandphone.setText(userProfile.getuserHandphone());
-                newPosition.setText(userProfile.getuserPosition());
+//                newPosition.setText(userProfile.getuserPosition());
                 newStaffID.setText(userProfile.getuserStaffID());
                 newPassword.setText(userProfile.getuserPassword());
             }
@@ -142,6 +150,87 @@ public class UpdateProfile extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Toast.makeText(UpdateProfile.this, databaseError.getCode(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        //hospital list
+        List<String> hospitallist = new ArrayList<>();
+        hospitallist.add("Pusat Rawatan Warga UMS");
+        hospitallist.add("Queen Elizabeth Hospital I");
+        hospitallist.add("Queen Elizabeth Hospital II");
+        hospitallist.add("Rafflesia Medical Centre");
+        hospitallist.add("Hospital Wanita Dan Kanak-Kanak Sabah");
+        hospitallist.add("KPJ Damai Specialist Hospital");
+        hospitallist.add("Gleneagles Kota Kinabalu");
+        hospitallist.add("Jesselton Medical Centre Kota Kinabalu");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  hospitallist);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        newHospital.setAdapter(adapter);
+        newHospital.getSelectedItem().toString();
+        newHospital.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String itemvalue = parent.getItemAtPosition(position).toString();
+                Toast.makeText(UpdateProfile.this,  itemvalue + " is selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //department list
+        List<String> departmentlist = new ArrayList<>();
+        departmentlist.add("Critical Care");
+        departmentlist.add("Accident and Emergency");
+        departmentlist.add("Anaesthetics");
+        departmentlist.add("Cardiology");
+        departmentlist.add("General Surgery");
+        departmentlist.add("Nurition and Dietetics");
+        departmentlist.add("Occupational Therapy");
+        departmentlist.add("Physiotherapy");
+        departmentlist.add("Pharmacy");
+        departmentlist.add("Urology");
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  departmentlist);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        newDepartment.setAdapter(adapter2);
+        newDepartment.getSelectedItem().toString();
+        newDepartment.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String itemvalue2 = parent.getItemAtPosition(position).toString();
+                Toast.makeText(UpdateProfile.this,  itemvalue2 + " is selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        //position list
+        List<String> positionlist = new ArrayList<>();
+        positionlist.add("Nurse");
+        positionlist.add("Doctor");
+
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,  positionlist);
+        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        newPosition.setAdapter(adapter3);
+        newPosition.getSelectedItem().toString();
+        newPosition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String itemvalue3 = parent.getItemAtPosition(position).toString();
+                Toast.makeText(UpdateProfile.this,  itemvalue3 + " is selected", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
@@ -155,9 +244,9 @@ public class UpdateProfile extends AppCompatActivity {
                 age = newAge.getText().toString().trim();
                 handphone = newHandphone.getText().toString().trim();
                 homeaddress = newHomeAddress.getText().toString().trim();
-                clinicianposition = newPosition.getText().toString().trim();
-                department = newDepartment.getText().toString().trim();
-                hospital = newHospital.getText().toString().trim();
+                clinicianposition = newPosition.getSelectedItem().toString();
+                department = newDepartment.getSelectedItem().toString();
+                hospital = newHospital.getSelectedItem().toString();
 
                 if (fullname.isEmpty()){
                     newFullName.setError("Full Name is required");
@@ -184,11 +273,7 @@ public class UpdateProfile extends AppCompatActivity {
                     newPassword.requestFocus();
                     return;
                 }
-                if (department.isEmpty()){
-                    newDepartment.setError("Department Name is required");
-                    newDepartment.requestFocus();
-                    return;
-                }
+
                 if (age.isEmpty()){
                     newAge.setError("Age is required");
                     newAge.requestFocus();
@@ -202,16 +287,6 @@ public class UpdateProfile extends AppCompatActivity {
                 if (homeaddress.isEmpty()){
                     newHomeAddress.setError("Home Address is required");
                     newHomeAddress.requestFocus();
-                    return;
-                }
-                if (clinicianposition.isEmpty()){
-                    newPosition.setError("Position is required");
-                    newPosition.requestFocus();
-                    return;
-                }
-                if (hospital.isEmpty()){
-                    newHospital.setError("Hospital Name is required");
-                    newHospital.requestFocus();
                     return;
                 }
 
