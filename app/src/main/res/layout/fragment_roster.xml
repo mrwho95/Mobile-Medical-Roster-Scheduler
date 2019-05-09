@@ -48,7 +48,7 @@
                         android:layout_marginBottom="1dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="CLINICIAN ROSTER"
+                        android:text="CLINICIAN DUTY ROSTER"
                         android:textColor="@color/color_Dark"
                         android:textStyle="bold" />
 
@@ -78,7 +78,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
                         android:gravity="center"
                         android:text="Monday"
                         android:textColor="@color/color_Dark"
@@ -108,7 +107,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
                         android:background="#ffffff"
                         android:gravity="center"
                         android:text="Tueday"
@@ -138,7 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
+
                         android:gravity="center"
                         android:text="Wedneday"
                         android:textColor="@color/color_Dark"
@@ -166,7 +164,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
+
                         android:background="#ffffff"
                         android:gravity="center"
                         android:text="Thursday"
@@ -197,7 +195,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
+
                         android:gravity="center"
                         android:text="Friday"
                         android:textColor="@color/color_Dark"
@@ -225,7 +223,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
+
                         android:background="#ffffff"
                         android:gravity="center"
                         android:text="Saturday"
@@ -256,7 +254,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="1dp"
                         android:layout_marginBottom="1dp"
-                        android:layout_weight="1"
+
                         android:gravity="center"
                         android:text="Sunday"
                         android:textColor="@color/color_Dark"
