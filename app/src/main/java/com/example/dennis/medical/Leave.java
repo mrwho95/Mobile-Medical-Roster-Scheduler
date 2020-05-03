@@ -24,8 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -127,6 +129,10 @@ public class Leave extends AppCompatActivity {
             }
         });
 
+        Date date = new Date();
+        final long time = date.getTime();
+		final String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:s").format(new Date());
+
 
         txtcliniciancover = (EditText)findViewById(R.id.txtcliniciancoverxml);
         txtreason = (EditText)findViewById(R.id.txtreasonxml);
@@ -156,6 +162,23 @@ public class Leave extends AppCompatActivity {
                         hashMap.put("leavestatus", value1);
                         leaveRef.updateChildren(hashMap);
                         LeaveAL(onleaveduration);
+						final DatabaseReference sendALNotification = firebaseDatabase.getReference().child("webNotification").push();
+						sendALNotification.child("Title").setValue("Annual Leave");
+						sendALNotification.child("timestamp_In_Milliseconds").setValue(time);
+						sendALNotification.child("current_Timestamp").setValue(timeStamp);
+						DatabaseReference getusername = firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("userFullName");
+						getusername.addValueEventListener(new ValueEventListener() {
+							@Override
+							public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+								String Applicant = dataSnapshot.getValue(String.class);
+								sendALNotification.child("Message").setValue(Applicant + " applies leave from "+ StartDate + " until " + EndDate + ". Please kindly check it.");
+							}
+
+							@Override
+							public void onCancelled(@NonNull DatabaseError databaseError) {
+
+							}
+						});
                         Toast.makeText(Leave.this, "Submit Leave Application Successful!", Toast.LENGTH_LONG).show();
                         break;
                     case R.id.RadioMC:
@@ -174,7 +197,25 @@ public class Leave extends AppCompatActivity {
                         hashMap2.put("leavestartdate", StartDate);
                         leaveRef.updateChildren(hashMap2);
                         LeaveMC(onleaveduration);
+						final DatabaseReference sendMCNotification = firebaseDatabase.getReference().child("webNotification").push();
+						sendMCNotification.child("Title").setValue("MC Leave");
+						sendMCNotification.child("timestamp_In_Milliseconds").setValue(time);
+						sendMCNotification.child("current_Timestamp").setValue(timeStamp);
+						DatabaseReference getusername2 = firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("userFullName");
+						getusername2.addValueEventListener(new ValueEventListener() {
+							@Override
+							public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+								String Applicant = dataSnapshot.getValue(String.class);
+								sendMCNotification.child("Message").setValue(Applicant + " applies MC from "+ StartDate + " until " + EndDate + ". Please kindly check it.");
+							}
+
+							@Override
+							public void onCancelled(@NonNull DatabaseError databaseError) {
+
+							}
+						});
                         Toast.makeText(Leave.this, "Submit Leave Application Successful!", Toast.LENGTH_LONG).show();
+
                         break;
                     case R.id.RadioPH:
                         TxTreason = txtreason.getText().toString().trim();
@@ -194,67 +235,28 @@ public class Leave extends AppCompatActivity {
                         hashMap3.put("leavestatus", value2);
                         leaveRef.updateChildren(hashMap3);
                         LeavePH(onleaveduration);
+						final DatabaseReference sendPHNotification = firebaseDatabase.getReference().child("webNotification").push();
+						sendPHNotification.child("Title").setValue("Public Holiday Leave");
+						sendPHNotification.child("timestamp_In_Milliseconds").setValue(time);
+						sendPHNotification.child("current_Timestamp").setValue(timeStamp);
+						DatabaseReference getusername3 = firebaseDatabase.getReference().child("Users").child(mAuth.getUid()).child("userFullName");
+						getusername3.addValueEventListener(new ValueEventListener() {
+							@Override
+							public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+								String Applicant = dataSnapshot.getValue(String.class);
+								sendPHNotification.child("Message").setValue(Applicant + " applies leave from "+ StartDate + " until " + EndDate + ". Please kindly check it.");
+							}
+
+							@Override
+							public void onCancelled(@NonNull DatabaseError databaseError) {
+
+							}
+						});
                         Toast.makeText(Leave.this, "Submit Leave Application Successful!", Toast.LENGTH_LONG).show();
                         break;
                     default:
                 }
 
-//                DatabaseReference leaveRef1 = firebaseDatabase.getReference().child("medical_table").child(mAuth.getUid());
-//                switch (checkedId){
-//                    case R.id.RadioAL:
-//                        TxTreason = txtreason.getText().toString().trim();
-//                        StartDate = startdate.getText().toString().trim();
-//                        EndDate = enddate.getText().toString().trim();
-//                        TxTcliniciancover = txtcliniciancover.getText().toString().trim();
-//                        medicalleave = leaveoption.getText().toString().trim();
-//                        onleaveduration = leaveduration.getText().toString().trim();
-//                        String value3 = "Pending";
-//                        HashMap<String, Object>hashMap4 = new HashMap<>();
-//                        hashMap4.put("clinician_cover", TxTcliniciancover );
-//                        hashMap4.put("leaveduration", onleaveduration);
-//                        hashMap4.put("leavereason", TxTreason);
-//                        hashMap4.put("leaveenddate", EndDate);
-//                        hashMap4.put("leavetype", medicalleave);
-//                        hashMap4.put("leavestartdate", StartDate);
-//                        hashMap4.put("leavestatus", value3);
-//                        leaveRef1.updateChildren(hashMap4);
-//                        break;
-//                    case R.id.RadioMC:
-//                        TxTreason = txtreason.getText().toString().trim();
-//                        StartDate = startdate.getText().toString().trim();
-//                        EndDate = enddate.getText().toString().trim();
-//                        TxTcliniciancover = txtcliniciancover.getText().toString().trim();
-//                        medicalleave = leaveoption.getText().toString().trim();
-//                        onleaveduration = leaveduration.getText().toString().trim();
-//                        HashMap<String, Object>hashMap5 = new HashMap<>();
-//                        hashMap5.put("clinician_cover", TxTcliniciancover );
-//                        hashMap5.put("leaveduration", onleaveduration);
-//                        hashMap5.put("leavereason", TxTreason);
-//                        hashMap5.put("leaveenddate", EndDate);
-//                        hashMap5.put("leavetype", medicalleave);
-//                        hashMap5.put("leavestartdate", StartDate);
-//                        leaveRef1.updateChildren(hashMap5);
-//                        break;
-//                    case R.id.RadioPH:
-//                        TxTreason = txtreason.getText().toString().trim();
-//                        StartDate = startdate.getText().toString().trim();
-//                        EndDate = enddate.getText().toString().trim();
-//                        TxTcliniciancover = txtcliniciancover.getText().toString().trim();
-//                        medicalleave = leaveoption.getText().toString().trim();
-//                        onleaveduration = leaveduration.getText().toString().trim();
-//                        String value4 = "Pending";
-//                        HashMap<String, Object>hashMap6 = new HashMap<>();
-//                        hashMap6.put("clinician_cover", TxTcliniciancover );
-//                        hashMap6.put("leaveduration", onleaveduration);
-//                        hashMap6.put("leavereason", TxTreason);
-//                        hashMap6.put("leaveenddate", EndDate);
-//                        hashMap6.put("leavetype", medicalleave);
-//                        hashMap6.put("leavestartdate", StartDate);
-//                        hashMap6.put("leavestatus", value4);
-//                        leaveRef1.updateChildren(hashMap6);
-//                        break;
-//                    default:
-//                }
 
             }
         });
